@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { TrendingUp, Clock, Target, Shield, Users, Sparkles } from 'lucide-react';
+import ShinyText from './ShinyText';
 
 interface Benefit {
   icon: React.ReactNode;
@@ -135,7 +136,11 @@ const Benefits: React.FC = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 glass rounded-full px-4 py-2 mb-6">
             <TrendingUp className="w-4 h-4 text-green-400" />
-            <span className="text-sm text-gray-300">AI Revolution Impact</span>
+            <ShinyText 
+              text="AI Revolution Impact" 
+              speed={6} 
+              className="text-sm text-gray-300"
+            />
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             Shaping the Future of

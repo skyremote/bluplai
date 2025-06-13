@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { MessageSquare, Presentation as PresentationChart, Users, Brain, BarChart3, Zap, CheckCircle } from 'lucide-react';
+import ShinyText from './ShinyText';
 
 interface Feature {
   icon: React.ReactNode;
@@ -92,7 +93,11 @@ const Features: React.FC = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 glass rounded-full px-4 py-2 mb-6">
             <Zap className="w-4 h-4 text-yellow-400" />
-            <span className="text-sm text-gray-300">AI Role Creation Tools</span>
+            <ShinyText 
+              text="AI Role Creation Tools" 
+              speed={6} 
+              className="text-sm text-gray-300"
+            />
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             Build Tomorrow's
