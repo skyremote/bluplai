@@ -102,7 +102,7 @@ const Features: React.FC = () => {
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             From Platformers to Plaiers - we're creating the tools and roles that will define 
-            the next generation of AI professionals. Simple, dynamic, and ready for Gen Z.
+            the next generation of professionals. Simple, dynamic, and ready for everyone
           </p>
         </div>
 
