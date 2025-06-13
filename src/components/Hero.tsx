@@ -60,17 +60,8 @@ const Hero: React.FC = () => {
             <span className="text-purple-400 font-semibold"> 5+ tools</span> into one unified AI-powered platform
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12">
-            <button className="group bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-full text-white font-medium text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 flex items-center space-x-2">
-              <span>Start Free Trial</span>
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="text-gray-300 hover:text-white font-medium text-lg flex items-center space-x-2 group">
-              <span>Watch Demo</span>
-              <div className="w-12 h-12 rounded-full border-2 border-gray-300 group-hover:border-white flex items-center justify-center transition-colors">
-                <div className="w-0 h-0 border-l-[6px] border-l-gray-300 group-hover:border-l-white border-y-[4px] border-y-transparent ml-1 transition-colors"></div>
-              </div>
-            </button>
+          <div className="mb-12">
+            {/* Buttons removed as requested */}
           </div>
           
           {/* Stats */}
