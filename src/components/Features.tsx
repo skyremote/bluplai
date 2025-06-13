@@ -48,8 +48,8 @@ const features: Feature[] = [
   {
     icon: <PresentationChart className="w-8 h-8" />,
     title: "Dale Command Center",
-    description: "The ultimate dashboard for AI innovators - simple, straightforward, and ready for action.",
-    benefits: ["One-click deployment", "Minimalist design", "Action-oriented"],
+    description: "The spirit behind everything we build: \"Dale!\" means \"go for it!\"—and it's our way of fusing creativity, action, and two unique backgrounds into bold, collaborative progress.",
+    benefits: ["Collaborative mindset", "Fast-moving culture", "Progress over perfection"],
     color: "from-yellow-500 to-orange-500"
   }
 ];
@@ -143,11 +143,6 @@ const Features: React.FC = () => {
                 ))}
               </ul>
               
-              {/* CTA */}
-              <div className="flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
-                <span className="text-sm font-medium">Learn more</span>
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </div>
             </div>
           ))}
         </div>

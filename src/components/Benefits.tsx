@@ -12,37 +12,37 @@ const benefits: Benefit[] = [
   {
     icon: <Users className="w-8 h-8" />,
     stat: "10+",
-    description: "New AI roles created for the next generation workforce",
+    description: "New workflows and AI-powered tools designed for the next-gen workforce",
     color: "text-blue-400"
   },
   {
-    icon: <Sparkles className="w-8 h-8" />,
-    stat: "Gen Z",
-    description: "Ready platform designed for digital natives",
+    icon: <Shield className="w-8 h-8" />,
+    stat: "10+",
+    description: "Strategic integrations with the tools businesses already use (Salesforce, Microsoft 365, Google Workspace, and more)",
     color: "text-green-400"
   },
   {
-    icon: <TrendingUp className="w-8 h-8" />,
-    stat: "Global",
-    description: "Reach and impact across industries and borders",
+    icon: <Sparkles className="w-8 h-8" />,
+    stat: "100+",
+    description: "Teams already transforming customer engagement with Bluplai",
     color: "text-purple-400"
   },
   {
-    icon: <Target className="w-8 h-8" />,
-    stat: "100%",
-    description: "Dynamic and playful approach to AI innovation",
+    icon: <Clock className="w-8 h-8" />,
+    stat: "60%",
+    description: "Reduction in admin time for users through AI-powered automation",
     color: "text-teal-400"
   },
   {
-    icon: <Clock className="w-8 h-8" />,
-    stat: "Dale!",
-    description: "Ready-to-action philosophy for fast-moving creators",
+    icon: <TrendingUp className="w-8 h-8" />,
+    stat: "10x",
+    description: "Faster delivery of professional customer success plans, ROI analyses, and dashboards",
     color: "text-orange-400"
   },
   {
-    icon: <Shield className="w-8 h-8" />,
-    stat: "Mario & Luigi",
-    description: "Proven duo bringing different strengths together",
+    icon: <Target className="w-8 h-8" />,
+    stat: "80%",
+    description: "Customer retention rate, driven by value, insight, and seamless workflows",
     color: "text-yellow-400"
   }
 ];
@@ -184,13 +184,6 @@ const Benefits: React.FC = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <p className="text-gray-400 mb-6">Ready to join the AI revolution? Dale - let's build the future together!</p>
-          <button className="bg-gradient-to-r from-green-500 to-blue-600 px-8 py-4 rounded-full text-white font-medium text-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 hover:scale-105">
-            Join the Movement
-          </button>
-        </div>
       </div>
     </section>
   );
