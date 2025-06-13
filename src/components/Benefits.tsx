@@ -10,39 +10,39 @@ interface Benefit {
 
 const benefits: Benefit[] = [
   {
-    icon: <Clock className="w-8 h-8" />,
-    stat: "60%",
-    description: "Reduction in administrative tasks through AI automation",
+    icon: <Users className="w-8 h-8" />,
+    stat: "10+",
+    description: "New AI roles created for the next generation workforce",
     color: "text-blue-400"
   },
   {
-    icon: <Target className="w-8 h-8" />,
-    stat: "25%",
-    description: "Increase in customer retention rates",
+    icon: <Sparkles className="w-8 h-8" />,
+    stat: "Gen Z",
+    description: "Ready platform designed for digital natives",
     color: "text-green-400"
   },
   {
     icon: <TrendingUp className="w-8 h-8" />,
-    stat: "10x",
-    description: "Faster generation of professional deliverables",
+    stat: "Global",
+    description: "Reach and impact across industries and borders",
     color: "text-purple-400"
   },
   {
-    icon: <Users className="w-8 h-8" />,
-    stat: "5+",
-    description: "Tools consolidated into one unified platform",
+    icon: <Target className="w-8 h-8" />,
+    stat: "100%",
+    description: "Dynamic and playful approach to AI innovation",
     color: "text-teal-400"
   },
   {
-    icon: <Shield className="w-8 h-8" />,
-    stat: "80%",
-    description: "Improvement in customer engagement visibility",
+    icon: <Clock className="w-8 h-8" />,
+    stat: "Dale!",
+    description: "Ready-to-action philosophy for fast-moving creators",
     color: "text-orange-400"
   },
   {
-    icon: <Sparkles className="w-8 h-8" />,
-    stat: "99.9%",
-    description: "Platform uptime with enterprise-grade reliability",
+    icon: <Shield className="w-8 h-8" />,
+    stat: "Mario & Luigi",
+    description: "Proven duo bringing different strengths together",
     color: "text-yellow-400"
   }
 ];
@@ -135,17 +135,17 @@ const Benefits: React.FC = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 glass rounded-full px-4 py-2 mb-6">
             <TrendingUp className="w-4 h-4 text-green-400" />
-            <span className="text-sm text-gray-300">Proven Results</span>
+            <span className="text-sm text-gray-300">AI Revolution Impact</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Measurable Impact on
+            Shaping the Future of
             <span className="block bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              Your Bottom Line
+              AI Work
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            See the quantifiable benefits that leading companies achieve when they transform 
-            their customer success operations with Bluplai.
+            From two engineers with a vision to a global movement - see how Dani & Leandro's 
+            dynamic approach is creating opportunities for the next generation of AI innovators.
           </p>
         </div>
 
@@ -185,9 +185,9 @@ const Benefits: React.FC = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <p className="text-gray-400 mb-6">Ready to see these results for your business?</p>
+          <p className="text-gray-400 mb-6">Ready to join the AI revolution? Dale - let's build the future together!</p>
           <button className="bg-gradient-to-r from-green-500 to-blue-600 px-8 py-4 rounded-full text-white font-medium text-lg hover:from-green-600 hover:to-blue-700 transition-all duration-300 hover:scale-105">
-            Start Your Free Trial
+            Join the Movement
           </button>
         </div>
       </div>

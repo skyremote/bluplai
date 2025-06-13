@@ -11,45 +11,45 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    icon: <MessageSquare className="w-8 h-8" />,
-    title: "AI-Powered Note Transcription",
-    description: "Automatically capture and organize discovery call notes with intelligent summarization.",
-    benefits: ["Real-time transcription", "Smart action items", "Auto-organization"],
+    icon: <Brain className="w-8 h-8" />,
+    title: "Platformer Toolkit",
+    description: "Master AI platform building with tools designed for the next generation of tech creators.",
+    benefits: ["AI-first design", "Gen Z workflows", "Ready-to-deploy"],
     color: "from-blue-500 to-cyan-500"
   },
   {
-    icon: <PresentationChart className="w-8 h-8" />,
-    title: "Digital Whiteboard",
-    description: "Create interactive diagrams and workflows with collaborative editing capabilities.",
-    benefits: ["Real-time collaboration", "Template library", "Export options"],
+    icon: <Zap className="w-8 h-8" />,
+    title: "Plaier Studio",
+    description: "Where gaming meets AI - create interactive experiences that make AI accessible and fun.",
+    benefits: ["Gamified learning", "Interactive tools", "Playful interfaces"],
     color: "from-purple-500 to-pink-500"
   },
   {
     icon: <Users className="w-8 h-8" />,
-    title: "Success Plan Builder",
-    description: "Generate comprehensive success plans from customizable templates with AI assistance.",
-    benefits: ["Template automation", "KPI tracking", "Milestone management"],
+    title: "AI Role Designer",
+    description: "Define and create entirely new job roles in the AI industry - from concept to career path.",
+    benefits: ["Role templates", "Career mapping", "Skill frameworks"],
     color: "from-teal-500 to-green-500"
   },
   {
-    icon: <Brain className="w-8 h-8" />,
-    title: "AI Insights & Recommendations",
-    description: "Get intelligent recommendations and predictive insights for customer success.",
-    benefits: ["Predictive analytics", "Risk assessment", "Opportunity identification"],
+    icon: <MessageSquare className="w-8 h-8" />,
+    title: "Dynamic Facilitator",
+    description: "Tools for AI-curious minds to facilitate breakthrough conversations and collaborations.",
+    benefits: ["Conversation starters", "Brainstorm tools", "Collaboration magic"],
     color: "from-orange-500 to-red-500"
   },
   {
     icon: <BarChart3 className="w-8 h-8" />,
-    title: "Real-time Analytics",
-    description: "Track customer health metrics and engagement with comprehensive dashboards.",
-    benefits: ["Health scoring", "Engagement metrics", "Custom reporting"],
+    title: "Global Impact Tracker",
+    description: "Measure your contribution to the AI revolution with dashboards that make sense.",
+    benefits: ["Impact metrics", "Global reach", "Achievement unlocks"],
     color: "from-indigo-500 to-purple-500"
   },
   {
-    icon: <Zap className="w-8 h-8" />,
-    title: "Universal Integrations",
-    description: "Seamlessly connect with Salesforce, Microsoft 365, Google Workspace, and more.",
-    benefits: ["Bi-directional sync", "API framework", "Webhook support"],
+    icon: <PresentationChart className="w-8 h-8" />,
+    title: "Dale Command Center",
+    description: "The ultimate dashboard for AI innovators - simple, straightforward, and ready for action.",
+    benefits: ["One-click deployment", "Minimalist design", "Action-oriented"],
     color: "from-yellow-500 to-orange-500"
   }
 ];
@@ -92,17 +92,17 @@ const Features: React.FC = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 glass rounded-full px-4 py-2 mb-6">
             <Zap className="w-4 h-4 text-yellow-400" />
-            <span className="text-sm text-gray-300">Platform Features</span>
+            <span className="text-sm text-gray-300">AI Role Creation Tools</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Everything You Need in
+            Build Tomorrow's
             <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              One Platform
+              AI Workforce
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Consolidate your customer success workflow with AI-powered tools that integrate seamlessly 
-            with your existing business systems.
+            From Platformers to Plaiers - we're creating the tools and roles that will define 
+            the next generation of AI professionals. Simple, dynamic, and ready for Gen Z.
           </p>
         </div>
 

@@ -1,0 +1,34 @@
+.text-block {
+  cursor: pointer;
+  display: block;
+  transition: all 0.2s ease;
+  user-select: none;
+  font-family: inherit;
+  overflow: visible;
+  word-wrap: break-word;
+  hyphens: auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+.text-block:hover {
+  transform: scale(1.02);
+}
+
+.text-block p {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: inherit;
+}
+
+.char {
+  display: inline-block;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

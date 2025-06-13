@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronRight, Sparkles, Bot, Users, TrendingUp } from 'lucide-react';
+import ScrambledText from './ScrambledText';
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,25 +40,29 @@ const Hero: React.FC = () => {
       </nav>
 
       {/* Hero Content */}
-      <div className="max-w-7xl mx-auto px-6 text-center z-10">
-        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 w-full">
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} overflow-hidden`}>
           <div className="flex items-center justify-center mb-6">
             <div className="glass rounded-full px-4 py-2 flex items-center space-x-2">
               <Sparkles className="w-4 h-4 text-yellow-400" />
-              <span className="text-sm text-gray-300">AI-Powered Customer Success</span>
+              <span className="text-sm text-gray-300">AI Industry Role Creators</span>
             </div>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Transform Your
-            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">
-              Customer Engagement
-            </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight overflow-hidden">
+            <ScrambledText
+              className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent font-bold cursor-pointer"
+              radius={150}
+              duration={1.5}
+              speed={0.8}
+              scrambleChars="█▓▒░.:!@#$%^&*"
+            >
+              Creating AI's Future
+            </ScrambledText>
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Reduce admin work by <span className="text-teal-400 font-semibold">60%</span> and consolidate 
-            <span className="text-purple-400 font-semibold"> 5+ tools</span> into one unified AI-powered platform
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed px-4 break-words">
+            We are here to help you build the next generation of <span className="text-purple-400 font-semibold whitespace-nowrap">AI in your business</span>. Think <span className="text-teal-400 font-semibold">Platformers</span> or <span className="text-yellow-400 font-semibold">Plaiers</span>, we're making AI accessible, playful and ready for <span className="text-blue-400 font-semibold">your business and employees</span>.
           </p>
           
           <div className="mb-12">
@@ -67,16 +72,16 @@ const Hero: React.FC = () => {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div className="stagger-item text-center">
-              <div className="text-3xl font-bold text-blue-400 mb-2">60%</div>
-              <div className="text-gray-400">Less Admin Work</div>
+              <div className="text-3xl font-bold text-blue-400 mb-2">10+</div>
+              <div className="text-gray-400">New AI Roles</div>
             </div>
             <div className="stagger-item text-center">
-              <div className="text-3xl font-bold text-purple-400 mb-2">5+</div>
-              <div className="text-gray-400">Tools Consolidated</div>
+              <div className="text-3xl font-bold text-purple-400 mb-2">Gen Z</div>
+              <div className="text-gray-400">Ready Platform</div>
             </div>
             <div className="stagger-item text-center">
-              <div className="text-3xl font-bold text-teal-400 mb-2">25%</div>
-              <div className="text-gray-400">Higher Retention</div>
+              <div className="text-3xl font-bold text-teal-400 mb-2">100%</div>
+              <div className="text-gray-400">Global & Dynamic</div>
             </div>
           </div>
         </div>
