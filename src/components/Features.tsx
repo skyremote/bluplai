@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { MessageSquare, Presentation as PresentationChart, Users, Brain, BarChart3, Zap, ArrowRight, CheckCircle } from 'lucide-react';
+import { MessageSquare, Presentation as PresentationChart, Users, Brain, BarChart3, Zap, CheckCircle } from 'lucide-react';
 
 interface Feature {
   icon: React.ReactNode;
