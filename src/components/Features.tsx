@@ -26,9 +26,9 @@ const features: Feature[] = [
   },
   {
     icon: <Users className="w-8 h-8" />,
-    title: "AI Role Designer",
-    description: "Define and create entirely new job roles in the AI industry - from concept to career path.",
-    benefits: ["Role templates", "Career mapping", "Skill frameworks"],
+    title: "LLM Control Center",
+    description: "Take control of how your business interacts with LLMs. Train users, prevent hallucinations, and ensure reliable AI responses.",
+    benefits: ["User onboarding", "Response validation", "Hallucination prevention"],
     color: "from-teal-500 to-green-500"
   },
   {

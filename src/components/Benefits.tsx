@@ -144,8 +144,9 @@ const Benefits: React.FC = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            From two engineers with a vision to a global movement - see how Dani & Leandro's 
-            dynamic approach is creating opportunities for the next generation of AI innovators.
+            Starting with two engineers and a bold idea, our movement now unlocks opportunity for
+            forward-thinking businesses and innovators everywhere—helping teams scale from incremental
+            gains to 10× outcomes while enabling those around them to thrive.
           </p>
         </div>
 
