@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronRight, Sparkles, Bot, Users, TrendingUp } from 'lucide-react';
-import ScrambledText from './ScrambledText';
+import RotatingText from './RotatingText';
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,8 +40,8 @@ const Hero: React.FC = () => {
       </nav>
 
       {/* Hero Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 w-full">
-        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} overflow-hidden`}>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-20 w-full">
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="flex items-center justify-center mb-6">
             <div className="glass rounded-full px-4 py-2 flex items-center space-x-2">
               <Sparkles className="w-4 h-4 text-yellow-400" />
@@ -49,16 +49,20 @@ const Hero: React.FC = () => {
             </div>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight overflow-hidden">
-            <ScrambledText
-              className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent font-bold cursor-pointer"
-              radius={150}
-              duration={1.5}
-              speed={0.8}
-              scrambleChars="█▓▒░.:!@#$%^&*"
-            >
-              Creating AI's Future
-            </ScrambledText>
+          <h1 className="relative z-30 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight text-white">
+            Creating AI's{' '}
+            <RotatingText
+              texts={['Future', 'Generation', 'Now', 'Impact']}
+              mainClassName="inline-block text-white"
+              staggerFrom="last"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2500}
+            />
           </h1>
           
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed px-4 break-words">
