@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronRight, Sparkles, Bot, Users, TrendingUp } from 'lucide-react';
+import { ChevronRight, Sparkles, Users, TrendingUp } from 'lucide-react';
 import RotatingText from './RotatingText';
 import ShinyText from './ShinyText';
 import ContactDropdown from './ContactDropdown';
@@ -24,11 +24,8 @@ const Hero: React.FC = () => {
       {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-50 p-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <Bot className="w-8 h-8 text-blue-400" />
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Bluplai
-            </span>
+          <div className="flex items-center">
+            <img src="/bluplai-logo-white.png" alt="Bluplai" className="h-32" />
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
