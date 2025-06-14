@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bot, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -8,11 +8,8 @@ const Footer: React.FC = () => {
         <div className="text-center">
           {/* Brand */}
           <div className="mb-8">
-            <div className="flex items-center justify-center space-x-2 mb-6">
-              <Bot className="w-8 h-8 text-blue-400" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Bluplai
-              </span>
+            <div className="flex items-center justify-center mb-6">
+              <img src="/bluplai-logo-white.png" alt="Bluplai" className="h-24" />
             </div>
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
               Meet the dynamic duo creating tomorrow's AI workforce. From Platformers to Plaiers - 
