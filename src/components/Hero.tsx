@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Sparkles, Users, TrendingUp } from 'lucide-react';
+import { ChevronRight, Sparkles, Users, TrendingUp, Menu, X } from 'lucide-react';
 import RotatingText from './RotatingText';
 import ShinyText from './ShinyText';
 import ContactDropdown from './ContactDropdown';
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -23,10 +24,10 @@ const Hero: React.FC = () => {
       <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-teal-500/20 rounded-full blur-xl pulse-slow"></div>
       
       {/* Navigation */}
-      <nav className="absolute top-0 left-0 right-0 z-50 p-6">
-        <div className="max-w-7xl mx-auto flex justify-center md:justify-between items-center">
+      <nav className="absolute top-0 left-0 right-0 z-50 p-4 md:p-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center">
-            <img src="/bluplai-logo-white.png" alt="Bluplai" className="h-20 md:h-32" />
+            <img src="/bluplai-logo-white.png" alt="Bluplai" className="h-12 md:h-20" />
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
@@ -35,7 +36,35 @@ const Hero: React.FC = () => {
             <a href="#story" className="text-gray-300 hover:text-white transition-colors">Success Story</a>
             <ContactDropdown />
           </div>
+          <button
+            className="md:hidden inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-gray-100 backdrop-blur hover:bg-white/20 transition"
+            aria-label="Open menu"
+            onClick={() => setMenuOpen(true)}
+          >
+            <Menu className="h-5 w-5" />
+          </button>
         </div>
+        {menuOpen && (
+          <div className="md:hidden fixed inset-0 z-50 bg-gray-900/95 backdrop-blur">
+            <div className="flex items-center justify-between p-4">
+              <img src="/bluplai-logo-white.png" alt="Bluplai" className="h-8" />
+              <button
+                className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/10 px-3 py-2 text-gray-100 hover:bg-white/20 transition"
+                aria-label="Close menu"
+                onClick={() => setMenuOpen(false)}
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="px-6 py-4 space-y-4">
+              <a href="#features" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Features</a>
+              <a href="#benefits" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Benefits</a>
+              <Link to="/offerings" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Offerings</Link>
+              <a href="#story" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Success Story</a>
+              <div className="pt-2"><ContactDropdown /></div>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Content */}
