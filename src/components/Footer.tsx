@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
               <img src="/bluplai-logo-white.png" alt="Bluplai" className="h-24" />
             </div>
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Meet the dynamic duo creating tomorrow's AI workforce. From Platformers to Plaiers - 
+              From Platformers to Plaiers - 
               we're building playful, accessible AI tools for the next generation.
             </p>
             
