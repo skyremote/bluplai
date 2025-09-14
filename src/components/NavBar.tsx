@@ -18,6 +18,14 @@ function NavBar() {
           >
             Offerings
           </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `transition-colors hover:text-cyan-300 ${isActive ? 'text-cyan-300' : 'text-gray-300'}`
+            }
+          >
+            About
+          </NavLink>
         </nav>
       </div>
     </header>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Sparkles, Users, TrendingUp, Menu, X } from 'lucide-react';
+import { Sparkles, Menu, X } from 'lucide-react';
 import RotatingText from './RotatingText';
 import ShinyText from './ShinyText';
 import ContactDropdown from './ContactDropdown';
@@ -33,6 +33,7 @@ const Hero: React.FC = () => {
             <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
             <a href="#benefits" className="text-gray-300 hover:text-white transition-colors">Benefits</a>
             <Link to="/offerings" className="text-gray-300 hover:text-white transition-colors">Offerings</Link>
+            <Link to="/about" className="text-gray-300 hover:text-white transition-colors">About</Link>
             <a href="#story" className="text-gray-300 hover:text-white transition-colors">Success Story</a>
             <ContactDropdown />
           </div>
@@ -60,6 +61,7 @@ const Hero: React.FC = () => {
               <a href="#features" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Features</a>
               <a href="#benefits" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Benefits</a>
               <Link to="/offerings" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Offerings</Link>
+              <Link to="/about" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>About</Link>
               <a href="#story" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Success Story</a>
               <div className="pt-2"><ContactDropdown /></div>
             </div>
@@ -87,9 +89,6 @@ const Hero: React.FC = () => {
               texts={['Future', 'Generation', 'Now', 'Impact']}
               mainClassName="inline-block text-white"
               staggerFrom="last"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "-120%" }}
               staggerDuration={0.025}
               splitLevelClassName="overflow-hidden"
               transition={{ type: "spring", damping: 30, stiffness: 400 }}

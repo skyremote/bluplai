@@ -126,3 +126,50 @@
 .counter-animate {
   animation: countUp 0.8s ease-out forwards;
 }
+
+/* Button Shimmer */
+@keyframes shimmerSweep {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+}
+
+.btn-shimmer:hover::after {
+  animation: shimmerSweep 1s ease;
+}
+
+/* Flow Lines Background */
+@keyframes dashFlow {
+  to { stroke-dashoffset: -300; }
+}
+
+.flow-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.flow-lines path {
+  /* Subtle light gray/white for low-contrast lines */
+  stroke: rgba(255, 255, 255, 0.28);
+  stroke-width: 1.25;
+  fill: none;
+  stroke-dasharray: 6 10;
+  animation: dashFlow 12s linear infinite;
+}
