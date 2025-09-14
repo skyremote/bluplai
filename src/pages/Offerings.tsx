@@ -106,10 +106,10 @@ const PlanPanel: React.FC<{ bullets: string[]; price: string; label: string }> =
 
 const Offerings: React.FC = () => {
   const onCTA = (plan: string) => () => {
-    const email = 'info@bluplai.com';
+    const emails = ['dw@bluplai.com', 'llc@bluplai.com'];
     const subject = encodeURIComponent(`Interested in ${plan}`);
     const body = encodeURIComponent('Hi BluplAI team,\n\nWe would like to learn more.');
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${emails.join(',')}?subject=${subject}&body=${body}`;
   };
 
   return (
