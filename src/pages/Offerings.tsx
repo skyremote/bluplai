@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfileCard from '../components/ProfileCard';
+import MobilePlanCard from '../components/MobilePlanCard';
 
 const packages = [
   {
@@ -105,7 +106,7 @@ const PlanPanel: React.FC<{ bullets: string[]; price: string; label: string }> =
 
 const Offerings: React.FC = () => {
   const onCTA = (plan: string) => () => {
-    const email = 'hello@blupl.ai';
+    const email = 'info@bluplai.com';
     const subject = encodeURIComponent(`Interested in ${plan}`);
     const body = encodeURIComponent('Hi BluplAI team,\n\nWe would like to learn more.');
     window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
@@ -126,7 +127,8 @@ const Offerings: React.FC = () => {
         <SectionHeading title="What We Offer" subtitle="Plai ecosystem packages and AI enablement services" />
 
         <h2 className="sr-only">Packages</h2>
-        <div className="grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Desktop */}
+        <div className="hidden md:grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {packages.map(p => (
             <div key={p.id} className="flex flex-col">
               <ProfileCard
@@ -144,10 +146,25 @@ const Offerings: React.FC = () => {
             </div>
           ))}
         </div>
+        {/* Mobile */}
+        <div className="md:hidden space-y-6">
+          {packages.map(p => (
+            <MobilePlanCard
+              key={p.id}
+              name={p.name}
+              subtitle={p.subtitle}
+              price={p.price}
+              bullets={p.bullets}
+              cta={p.cta}
+              onClick={onCTA(p.name)}
+              eyebrow="BluplAI"
+            />
+          ))}
+        </div>
 
         <h2 className="mt-16 text-2xl font-bold text-gray-100">AI Enablement Services</h2>
         <p className="text-gray-300 mt-2">Consulting and services for adopting and scaling AI.</p>
-        <div className="mt-6 grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="hidden md:grid mt-6 gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {services.map(s => (
             <div key={s.id} className="flex flex-col">
               <ProfileCard
@@ -163,6 +180,20 @@ const Offerings: React.FC = () => {
               />
               <PlanPanel bullets={s.bullets} price={s.price} label="Includes" />
             </div>
+          ))}
+        </div>
+        <div className="md:hidden mt-6 space-y-6">
+          {services.map(s => (
+            <MobilePlanCard
+              key={s.id}
+              name={s.name}
+              subtitle={s.subtitle}
+              price={s.price}
+              bullets={s.bullets}
+              cta={s.cta}
+              onClick={onCTA(s.name)}
+              eyebrow="NavAIgate"
+            />
           ))}
         </div>
       </div>
