@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -16,21 +16,15 @@ const Footer: React.FC = () => {
               we're building playful, accessible AI tools for the next generation.
             </p>
             
-            {/* WhatsApp Contacts */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-              <a href="https://wa.me/4915115856708" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 p-4 rounded-lg bg-gray-800 hover:bg-green-600 transition-all duration-300 hover:scale-105">
-                <Phone className="w-5 h-5 text-green-400" />
+            {/* Contact CTA */}
+            <div className="max-w-2xl mx-auto">
+              <a
+                href={`mailto:dw@bluplai.com,llc@bluplai.com?subject=${encodeURIComponent('Interested in BluplAI')}&body=${encodeURIComponent('Hi BluplAI team,\n\nWe would like to learn more.')}`}
+                className="flex items-center justify-center space-x-3 p-4 rounded-lg bg-gray-800 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              >
+                <Mail className="w-5 h-5 text-cyan-400" />
                 <div className="text-left">
-                  <div className="text-white font-medium">Daniel @ Bluplai</div>
-                  <div className="text-gray-400 text-sm">via WhatsApp</div>
-                </div>
-              </a>
-              
-              <a href="https://wa.me/34687259162" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-3 p-4 rounded-lg bg-gray-800 hover:bg-green-600 transition-all duration-300 hover:scale-105">
-                <Phone className="w-5 h-5 text-green-400" />
-                <div className="text-left">
-                  <div className="text-white font-medium">Leandro @ Bluplai</div>
-                  <div className="text-gray-400 text-sm">via WhatsApp</div>
+                  <div className="text-white font-medium">Email us if interested</div>
                 </div>
               </a>
             </div>
