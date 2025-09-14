@@ -1,20 +1,19 @@
 import React from 'react';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import Benefits from './components/Benefits';
-import CustomerStory from './components/CustomerStory';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './animations.css';
+import Home from './pages/Home';
+import Offerings from './pages/Offerings';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
-      <Hero />
-      <Features />
-      <Benefits />
-      <CustomerStory />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/offerings" element={<Offerings />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

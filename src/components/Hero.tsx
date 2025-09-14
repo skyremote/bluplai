@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronRight, Sparkles, Users, TrendingUp } from 'lucide-react';
 import RotatingText from './RotatingText';
 import ShinyText from './ShinyText';
@@ -30,6 +31,7 @@ const Hero: React.FC = () => {
           <div className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
             <a href="#benefits" className="text-gray-300 hover:text-white transition-colors">Benefits</a>
+            <Link to="/offerings" className="text-gray-300 hover:text-white transition-colors">Offerings</Link>
             <a href="#story" className="text-gray-300 hover:text-white transition-colors">Success Story</a>
             <ContactDropdown />
           </div>
