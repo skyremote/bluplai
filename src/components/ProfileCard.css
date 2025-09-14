@@ -72,7 +72,14 @@
 /* Mobile: remove shine and tilt to prevent jitter and heavy effects */
 @media (max-width: 768px) {
   .pc-card-wrapper { --card-opacity: 0; }
-  .pc-card { animation: none; box-shadow: none; }
+  .pc-card { height: 320px; max-height: 360px; animation: none; box-shadow: none; }
   .pc-card:hover, .pc-card.active { transform: none; }
   .pc-shine, .pc-shine::before, .pc-shine::after, .pc-glare, .pc-card-wrapper::before { display: none !important; }
+  /* Hide large image + in-card info to avoid crowding */
+  .pc-avatar-content .avatar { display: none !important; }
+  .pc-user-info { display: none !important; }
+  /* Emphasize heading area for compact look */
+  .pc-details { top: 1.75rem; }
+  .pc-details h3 { font-size: 1.6rem; }
+  .pc-details p { font-size: 0.9rem; top: -4px; }
 }
