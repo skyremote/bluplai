@@ -3,7 +3,7 @@ import React from 'react';
 type Props = {
   name: string;
   subtitle?: string;
-  price: string;
+  price?: string;
   bullets: string[];
   cta: string;
   onClick: () => void;
@@ -26,8 +26,10 @@ const MobilePlanCard: React.FC<Props> = ({ name, subtitle, price, bullets, cta, 
       <h3 className="text-2xl font-extrabold leading-snug">{name}</h3>
       {subtitle && <div className="text-sm text-purple-200 font-semibold mt-0.5">{subtitle}</div>}
 
-      {/* Price */}
-      <div className="mt-3 text-base text-gray-200 font-medium">{price}</div>
+      {/* Price (hidden when not provided) */}
+      {price && (
+        <div className="mt-3 text-base text-gray-200 font-medium">{price}</div>
+      )}
 
       <hr className="my-4 border-white/10" />
 
@@ -54,4 +56,3 @@ const MobilePlanCard: React.FC<Props> = ({ name, subtitle, price, bullets, cta, 
 };
 
 export default MobilePlanCard;
-

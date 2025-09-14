@@ -89,11 +89,10 @@ const SectionHeading: React.FC<{ title: string; subtitle?: string }> = ({ title,
   </div>
 );
 
-const PlanPanel: React.FC<{ bullets: string[]; price: string; label: string }> = ({ bullets, price, label }) => (
+const PlanPanel: React.FC<{ bullets: string[]; label: string }> = ({ bullets, label }) => (
   <div className="mt-4 rounded-xl border border-white/10 bg-gray-900/60 backdrop-blur p-5">
     <div className="flex items-baseline justify-between">
       <div className="text-lg font-semibold text-gray-200">{label}</div>
-      <div className="text-sm text-gray-300">{price}</div>
     </div>
     <hr className="my-3 border-white/10" />
     <ul className="space-y-2 list-disc pl-5 text-gray-300 text-sm">
@@ -136,13 +135,13 @@ const Offerings: React.FC = () => {
                 title={`${p.subtitle}`}
                 avatarUrl="/bluplai-logo.png"
                 handle="bluplai"
-                status={p.price}
+                
                 contactText={p.cta}
                 onContactClick={onCTA(p.name)}
                 showUserInfo
                 enableTilt={true}
               />
-              <PlanPanel bullets={p.bullets} price={p.price} label="Includes" />
+              <PlanPanel bullets={p.bullets} label="Includes" />
             </div>
           ))}
         </div>
@@ -153,7 +152,6 @@ const Offerings: React.FC = () => {
               key={p.id}
               name={p.name}
               subtitle={p.subtitle}
-              price={p.price}
               bullets={p.bullets}
               cta={p.cta}
               onClick={onCTA(p.name)}
@@ -171,14 +169,14 @@ const Offerings: React.FC = () => {
                 name={s.name}
                 title={`${s.subtitle}`}
                 avatarUrl="/bluplai-logo.png"
-                handle="navAIgate"
-                status={s.price}
+                handle="NavAIgate"
+                
                 contactText={s.cta}
                 onContactClick={onCTA(s.name)}
                 showUserInfo
                 enableTilt={true}
               />
-              <PlanPanel bullets={s.bullets} price={s.price} label="Includes" />
+              <PlanPanel bullets={s.bullets} label="Includes" />
             </div>
           ))}
         </div>
@@ -188,7 +186,6 @@ const Offerings: React.FC = () => {
               key={s.id}
               name={s.name}
               subtitle={s.subtitle}
-              price={s.price}
               bullets={s.bullets}
               cta={s.cta}
               onClick={onCTA(s.name)}
