@@ -66,8 +66,13 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   const wrapRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
+  const isFinePointer = typeof window !== 'undefined'
+    ? window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    : true;
+  const allowTilt = enableTilt && isFinePointer;
+
   const animationHandlers = useMemo(() => {
-    if (!enableTilt) return null;
+    if (!allowTilt) return null;
 
     let rafId: number | null = null;
 
@@ -137,7 +142,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
         }
       }
     };
-  }, [enableTilt]);
+  }, [allowTilt]);
 
   const handlePointerMove = useCallback(
     (event: PointerEvent) => {
@@ -195,7 +200,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   );
 
   useEffect(() => {
-    if (!enableTilt || !animationHandlers) return;
+    if (!allowTilt || !animationHandlers) return;
     const card = cardRef.current;
     const wrap = wrapRef.current;
     if (!card || !wrap) return;
@@ -239,7 +244,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       window.removeEventListener('deviceorientation', deviceOrientationHandler);
       animationHandlers.cancelAnimation();
     };
-  }, [enableTilt, enableMobileTilt, animationHandlers, handlePointerMove, handlePointerEnter, handlePointerLeave, handleDeviceOrientation]);
+  }, [allowTilt, enableMobileTilt, animationHandlers, handlePointerMove, handlePointerEnter, handlePointerLeave, handleDeviceOrientation]);
 
   const cardStyle = useMemo(
     () =>
