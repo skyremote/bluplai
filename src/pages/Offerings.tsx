@@ -133,12 +133,8 @@ const Offerings: React.FC = () => {
               <ProfileCard
                 name={p.name}
                 title={`${p.subtitle}`}
-                avatarUrl="/bluplai-logo.png"
-                handle="bluplai"
-                
                 contactText={p.cta}
                 onContactClick={onCTA(p.name)}
-                showUserInfo
                 enableTilt={true}
               />
               <PlanPanel bullets={p.bullets} label="Includes" />
@@ -168,12 +164,8 @@ const Offerings: React.FC = () => {
               <ProfileCard
                 name={s.name}
                 title={`${s.subtitle}`}
-                avatarUrl="/bluplai-logo.png"
-                handle="NavAIgate"
-                
                 contactText={s.cta}
                 onContactClick={onCTA(s.name)}
-                showUserInfo
                 enableTilt={true}
               />
               <PlanPanel bullets={s.bullets} label="Includes" />

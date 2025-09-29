@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 import './ProfileCard.css';
 
 export interface ProfileCardProps {
-  avatarUrl: string;
+  avatarUrl?: string;
   iconUrl?: string;
   grainUrl?: string;
   behindGradient?: string;
@@ -43,7 +43,6 @@ const adjust = (value: number, fromMin: number, fromMax: number, toMin: number, 
 const easeInOutCubic = (x: number): number => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
 const ProfileCardComponent: React.FC<ProfileCardProps> = ({
-  avatarUrl = '/bluplai-logo.png',
   iconUrl,
   grainUrl,
   behindGradient,
@@ -54,13 +53,9 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   enableMobileTilt = false,
   mobileTiltSensitivity = 5,
   tiltFactor = 1,
-  miniAvatarUrl,
   name = 'Plan',
   title = 'Details',
-  handle = 'bluplai',
-  status = '',
   contactText = 'Select',
-  showUserInfo = true,
   onContactClick
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -268,23 +263,13 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
           <div className="pc-shine" />
           <div className="pc-glare" />
           <div className="pc-content pc-avatar-content">
-            <img className="avatar" src={avatarUrl} alt={`${name || 'Plan'} avatar`} loading="lazy" onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }} />
-            {showUserInfo && (
-              <div className="pc-user-info">
-                <div className="pc-user-details">
-                  <div className="pc-mini-avatar">
-                    <img src={miniAvatarUrl || avatarUrl} alt={`${name || 'Plan'} mini avatar`} loading="lazy" onError={e => { const t = e.target as HTMLImageElement; t.style.opacity = '0.5'; t.src = avatarUrl; }} />
-                  </div>
-                  <div className="pc-user-text">
-                    <div className="pc-handle">@{handle}</div>
-                    {status && <div className="pc-status">{status}</div>}
-                  </div>
-                </div>
-                <button className="pc-contact-btn" onClick={handleContactClick} style={{ pointerEvents: 'auto' }} type="button" aria-label={`Contact about ${name || 'plan'}`}>
-                  {contactText}
-                </button>
-              </div>
-            )}
+            {/* Avatar and handle removed per request */}
+            <div className="pc-user-info" style={{ display: 'flex' }}>
+              <div className="pc-user-details" style={{ display: 'none' }} />
+              <button className="pc-contact-btn" onClick={handleContactClick} style={{ pointerEvents: 'auto' }} type="button" aria-label={`Contact about ${name || 'plan'}`}>
+                {contactText}
+              </button>
+            </div>
           </div>
           <div className="pc-content">
             <div className="pc-details">
