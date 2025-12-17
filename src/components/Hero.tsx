@@ -30,11 +30,10 @@ const Hero: React.FC = () => {
             <img src="/bluplai-logo-white.png" alt="Bluplai" className="h-12 md:h-20" />
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
-            <a href="#benefits" className="text-gray-300 hover:text-white transition-colors">Benefits</a>
-            <Link to="/offerings" className="text-gray-300 hover:text-white transition-colors">Offerings</Link>
+            <a href="#values" className="text-gray-300 hover:text-white transition-colors">Values</a>
+            <a href="#manifesto" className="text-gray-300 hover:text-white transition-colors">Manifesto</a>
+            <a href="#ecosystem" className="text-gray-300 hover:text-white transition-colors">Ecosystem</a>
             <Link to="/about" className="text-gray-300 hover:text-white transition-colors">About</Link>
-            <a href="#story" className="text-gray-300 hover:text-white transition-colors">Success Story</a>
             <ContactDropdown />
           </div>
           <button
@@ -58,11 +57,10 @@ const Hero: React.FC = () => {
               </button>
             </div>
             <div className="px-6 py-4 space-y-4">
-              <a href="#features" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Features</a>
-              <a href="#benefits" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Benefits</a>
-              <Link to="/offerings" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Offerings</Link>
+              <a href="#values" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Values</a>
+              <a href="#manifesto" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Manifesto</a>
+              <a href="#ecosystem" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Ecosystem</a>
               <Link to="/about" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>About</Link>
-              <a href="#story" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Success Story</a>
               <div className="pt-2"><ContactDropdown /></div>
             </div>
           </div>
@@ -97,28 +95,8 @@ const Hero: React.FC = () => {
           </h1>
           
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed px-4 break-words">
-            We are here to help you build the next generation of <span className="text-purple-400 font-semibold whitespace-nowrap">AI in your business</span>. Think <span className="text-teal-400 font-semibold">Platformers</span> or <span className="text-yellow-400 font-semibold">Plaiers</span>, we're making AI accessible, playful and ready for <span className="text-blue-400 font-semibold">your business and employees</span>.
+            Join the <span className="text-purple-400 font-semibold">movement</span> toward intelligent work. We're building playful, accessible AI for the next generation of <span className="text-yellow-400 font-semibold">Plaiers</span> — people who challenge the old way of working, replacing complexity with <span className="text-teal-400 font-semibold">clarity</span> and noise with <span className="text-blue-400 font-semibold">intelligence</span>.
           </p>
-          
-          <div className="mb-12">
-            {/* Buttons removed as requested */}
-          </div>
-          
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div className="stagger-item text-center">
-              <div className="text-3xl font-bold text-blue-400 mb-2">10+</div>
-              <div className="text-gray-400">New AI Roles</div>
-            </div>
-            <div className="stagger-item text-center">
-              <div className="text-3xl font-bold text-purple-400 mb-2">Gen Z</div>
-              <div className="text-gray-400">Ready Platform</div>
-            </div>
-            <div className="stagger-item text-center">
-              <div className="text-3xl font-bold text-teal-400 mb-2">100%</div>
-              <div className="text-gray-400">Global & Dynamic</div>
-            </div>
-          </div>
         </div>
       </div>
       

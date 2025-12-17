@@ -13,43 +13,43 @@ interface Feature {
 const features: Feature[] = [
   {
     icon: <Brain className="w-8 h-8" />,
-    title: "Platformer Toolkit",
-    description: "Master AI platform building with tools designed for the next generation of tech creators.",
-    benefits: ["AI-first design", "Gen Z workflows", "Ready-to-deploy"],
+    title: "Plaier Toolkit",
+    description: "Master AI with tools designed for the next generation of creative minds and problem solvers.",
+    benefits: ["Human-first design", "Intuitive workflows", "Ready-to-use"],
     color: "from-blue-500 to-cyan-500"
   },
   {
     icon: <Zap className="w-8 h-8" />,
     title: "Plaier Studio",
-    description: "Where gaming meets AI - create interactive experiences that make AI accessible and fun.",
-    benefits: ["Gamified learning", "Interactive tools", "Playful interfaces"],
+    description: "Where creativity meets AI — create interactive experiences that make AI accessible and fun.",
+    benefits: ["Playful learning", "Interactive tools", "Intuitive interfaces"],
     color: "from-purple-500 to-pink-500"
   },
   {
     icon: <Users className="w-8 h-8" />,
-    title: "LLM Control Center",
-    description: "Take control of how your business interacts with LLMs. Train users, prevent hallucinations, and ensure reliable AI responses.",
-    benefits: ["User onboarding", "Response validation", "Hallucination prevention"],
+    title: "AI Enablement Hub",
+    description: "Empower your team to work with AI confidently. Train users, ensure quality, and build trust.",
+    benefits: ["Team onboarding", "Quality assurance", "Trust building"],
     color: "from-teal-500 to-green-500"
   },
   {
     icon: <MessageSquare className="w-8 h-8" />,
     title: "Dynamic Facilitator",
-    description: "Tools for AI-curious minds to facilitate breakthrough conversations and collaborations.",
+    description: "Tools for curious minds to facilitate breakthrough conversations and meaningful collaborations.",
     benefits: ["Conversation starters", "Brainstorm tools", "Collaboration magic"],
     color: "from-orange-500 to-red-500"
   },
   {
     icon: <BarChart3 className="w-8 h-8" />,
-    title: "Global Impact Tracker",
-    description: "Measure your contribution to the AI revolution with dashboards that make sense.",
-    benefits: ["Impact metrics", "Global reach", "Achievement unlocks"],
+    title: "Impact Tracker",
+    description: "Measure your contribution to the movement with dashboards that tell your story.",
+    benefits: ["Impact metrics", "Progress visibility", "Achievement milestones"],
     color: "from-indigo-500 to-purple-500"
   },
   {
     icon: <PresentationChart className="w-8 h-8" />,
     title: "Dale Command Center",
-    description: "The spirit behind everything we build: \"Dale!\" means \"go for it!\"—and it's our way of fusing creativity, action, and two unique backgrounds into bold, collaborative progress.",
+    description: "The spirit behind everything we build: \"Dale!\" means \"go for it!\" — fusing creativity, action, and bold collaborative progress.",
     benefits: ["Collaborative mindset", "Fast-moving culture", "Progress over perfection"],
     color: "from-yellow-500 to-orange-500"
   }
@@ -93,21 +93,21 @@ const Features: React.FC = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 glass rounded-full px-4 py-2 mb-6">
             <Zap className="w-4 h-4 text-yellow-400" />
-            <ShinyText 
-              text="AI Role Creation Tools" 
-              speed={6} 
+            <ShinyText
+              text="Tools for the Movement"
+              speed={6}
               className="text-sm text-gray-300"
             />
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Build Tomorrow's
+            Built for
             <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              AI Workforce
+              Plaiers
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            From Platformers to Plaiers - we're creating the tools and roles that will define 
-            the next generation of professionals. Simple, dynamic, and ready for everyone
+            We're creating the tools that will define the next generation of work.
+            Simple, playful, and designed for people who want to make an impact.
           </p>
         </div>
 
