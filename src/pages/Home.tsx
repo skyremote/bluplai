@@ -4,6 +4,7 @@ import Message from '../components/Message';
 import Benefits from '../components/Benefits';
 import Manifesto from '../components/Manifesto';
 import Features from '../components/Features';
+import ProcessSection from '../components/ProcessSection';
 import AIHelpSection from '../components/AIHelpSection';
 import Plaiers from '../components/Plaiers';
 import Ecosystem from '../components/Ecosystem';
@@ -21,6 +22,7 @@ const Home: React.FC = () => {
       <Benefits />
       <Manifesto />
       <Features />
+      <ProcessSection />
       <AIHelpSection />
       <Plaiers />
       <Ecosystem />

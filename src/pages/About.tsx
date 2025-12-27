@@ -29,7 +29,7 @@ const About: React.FC = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent italic">
             About Us
           </h1>
           <p className="mt-4 text-gray-300 max-w-3xl mx-auto text-lg">
@@ -37,7 +37,7 @@ const About: React.FC = () => {
           </p>
         </motion.header>
 
-        {/* Team Avatars */}
+        {/* Founders Section */}
         <motion.section
           className="mb-16"
           initial={fadeUp.initial}
@@ -46,21 +46,47 @@ const About: React.FC = () => {
           viewport={{ once: true, amount: 0.2 }}
         >
           <div className="mx-auto max-w-4xl">
-            <div className="flex flex-wrap justify-center gap-8">
-              {/* Avatar placeholders - replace with actual photos */}
-              <div className="flex flex-col items-center">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-cyan-400/20 to-purple-400/20 border-2 border-white/10 flex items-center justify-center">
-                  <Users className="w-12 h-12 text-cyan-300/60" />
+            <div className="flex flex-wrap justify-center gap-12 md:gap-16">
+              {/* Daniel */}
+              <div className="flex flex-col items-center text-center max-w-xs">
+                <div className="relative group mb-4">
+                  <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-500/30 blur-lg opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                  <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-white/20">
+                    <img
+                      src="/plaier-innovator.png"
+                      alt="Daniel"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-                <p className="mt-3 text-gray-300 font-medium">Team Member</p>
-                <p className="text-gray-500 text-sm">Role</p>
+                <h3 className="text-xl font-bold text-yellow-400 italic">DANIEL</h3>
+                <p className="text-gray-300 text-sm mt-1 italic">
+                  The AI mechanic,<br />makes everything work with AI
+                </p>
+                <p className="text-cyan-400 text-sm mt-3 italic">
+                  He will help you define the<br />How & What with AI
+                </p>
               </div>
-              <div className="flex flex-col items-center">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-400/20 to-pink-400/20 border-2 border-white/10 flex items-center justify-center">
-                  <Users className="w-12 h-12 text-purple-300/60" />
+
+              {/* Leandro */}
+              <div className="flex flex-col items-center text-center max-w-xs">
+                <div className="relative group mb-4">
+                  <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-purple-400/30 to-pink-500/30 blur-lg opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                  <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-white/20">
+                    <img
+                      src="/plaier-creator.png"
+                      alt="Leandro"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-                <p className="mt-3 text-gray-300 font-medium">Team Member</p>
-                <p className="text-gray-500 text-sm">Role</p>
+                <h3 className="text-xl font-bold text-yellow-400 italic">LEANDRO</h3>
+                <p className="text-gray-300 text-sm mt-1 italic">
+                  The AI strategist,<br />shaping elegant AI strategies
+                </p>
+                <p className="text-cyan-400 text-sm mt-3 italic">
+                  He will help you define the<br />Why of AI
+                </p>
               </div>
             </div>
           </div>
