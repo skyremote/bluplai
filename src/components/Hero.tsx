@@ -33,6 +33,7 @@ const Hero: React.FC = () => {
             <a href="#values" className="text-gray-300 hover:text-white transition-colors">Values</a>
             <a href="#manifesto" className="text-gray-300 hover:text-white transition-colors">Manifesto</a>
             <a href="#ecosystem" className="text-gray-300 hover:text-white transition-colors">Ecosystem</a>
+            <a href="#movement" className="text-gray-300 hover:text-white transition-colors">Movement</a>
             <Link to="/about" className="text-gray-300 hover:text-white transition-colors">About</Link>
             <ContactDropdown />
           </div>
@@ -60,6 +61,7 @@ const Hero: React.FC = () => {
               <a href="#values" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Values</a>
               <a href="#manifesto" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Manifesto</a>
               <a href="#ecosystem" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Ecosystem</a>
+              <a href="#movement" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Movement</a>
               <Link to="/about" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>About</Link>
               <div className="pt-2"><ContactDropdown /></div>
             </div>

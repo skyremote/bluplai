@@ -33,7 +33,7 @@ const Plaiers: React.FC = () => {
               Plaiers?
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Plaiers are the people who challenge the status quo. They believe AI should work for humans,
             not the other way around. They're curious, creative, and ready to build the future.
           </p>
@@ -58,9 +58,9 @@ const Plaiers: React.FC = () => {
               {/* Sparkle decoration */}
               <Sparkles className="absolute top-4 right-4 w-6 h-6 text-yellow-400/60" />
             </div>
-            <h3 className="mt-6 text-xl font-bold text-white">The Innovator</h3>
-            <p className="text-gray-400 text-center max-w-xs mt-2">
-              Curious mind, problem solver, always pushing boundaries
+            <h3 className="mt-6 text-2xl md:text-3xl font-bold text-white">The Innovator</h3>
+            <p className="text-lg text-gray-300 text-center max-w-xs mt-2 leading-relaxed">
+              Curious mind, problem solver, always pushing boundaries to discover what's possible
             </p>
           </motion.div>
 
@@ -81,9 +81,9 @@ const Plaiers: React.FC = () => {
               {/* Sparkle decoration */}
               <Sparkles className="absolute top-4 right-4 w-6 h-6 text-pink-400/60" />
             </div>
-            <h3 className="mt-6 text-xl font-bold text-white">The Creator</h3>
-            <p className="text-gray-400 text-center max-w-xs mt-2">
-              Creative spirit, connector, building meaningful experiences
+            <h3 className="mt-6 text-2xl md:text-3xl font-bold text-white">The Creator</h3>
+            <p className="text-lg text-gray-300 text-center max-w-xs mt-2 leading-relaxed">
+              Creative spirit, connector, building meaningful experiences that matter
             </p>
           </motion.div>
         </div>
@@ -96,10 +96,10 @@ const Plaiers: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <p className="text-lg text-gray-300 mb-4">
+          <p className="text-xl md:text-2xl text-gray-300 mb-4">
             Are <span className="text-yellow-400 font-semibold">you</span> a Plaier?
           </p>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400">
             Character illustrations coming soon
           </p>
         </motion.div>

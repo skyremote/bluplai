@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mic, Play, Bell } from 'lucide-react';
+import { Mic, Play, Bell, Bot } from 'lucide-react';
 import ShinyText from './ShinyText';
 
 const Podcast: React.FC = () => {
@@ -38,12 +38,40 @@ const Podcast: React.FC = () => {
           </p>
         </motion.div>
 
+        {/* Podcast Cover Art Placeholder */}
+        <motion.div
+          className="flex justify-center mb-12"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div className="relative">
+            {/* Main podcast cover placeholder */}
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-green-400/20 to-teal-400/20 border border-green-400/30 flex items-center justify-center overflow-hidden">
+              <div className="text-center">
+                <Mic className="w-20 h-20 mx-auto text-green-400/50 mb-4" />
+                <p className="text-gray-400 text-sm font-medium">Podcast Cover Art</p>
+                <p className="text-gray-500 text-xs mt-1">Placeholder</p>
+              </div>
+            </div>
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-green-400/10 blur-xl"></div>
+            <div className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-teal-400/10 blur-xl"></div>
+
+            {/* Robot mascot placeholder */}
+            <div className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-gradient-to-br from-green-400/30 to-teal-400/30 border border-green-400/40 flex items-center justify-center">
+              <Bot className="w-10 h-10 text-green-400/70" />
+            </div>
+          </div>
+        </motion.div>
+
         {/* Coming Soon Card */}
         <motion.div
           className="rounded-2xl border border-green-400/20 bg-gray-900/60 backdrop-blur p-8 md:p-12 text-center"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true, amount: 0.3 }}
         >
           {/* Play Icon */}

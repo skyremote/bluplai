@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Layers, Navigation, Activity, ArrowRight } from 'lucide-react';
 import ShinyText from './ShinyText';
+import EcosystemVisualization from './EcosystemVisualization';
 
 interface EcosystemBrand {
   name: string;
@@ -71,6 +72,34 @@ const Ecosystem: React.FC = () => {
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Three brands, one vision. Together, we're building a future where AI and humans work in harmony.
+          </p>
+        </motion.div>
+
+        {/* 3D Ecosystem Visualization */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <EcosystemVisualization />
+        </motion.div>
+
+        {/* The One Problem We Solve */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            The One Problem We Solve
+          </h3>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            AI tools are everywhere, but they're fragmented, complex, and disconnected from how people actually work.
+            We bring harmony to the chaos — one intelligent ecosystem that makes AI feel natural, intuitive, and human.
           </p>
         </motion.div>
 
