@@ -1,262 +1,296 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Layers, Navigation, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Layer {
   name: string;
   subtitle: string;
-  color: string;
+  description: string;
+  icon: React.ReactNode;
+  gradient: string;
   glowColor: string;
-  delay: number;
 }
 
 const layers: Layer[] = [
   {
-    name: 'MovAI',
-    subtitle: 'Movement',
-    color: 'from-orange-400/80 to-yellow-500/80',
-    glowColor: 'orange',
-    delay: 0.4
+    name: 'Bluplai',
+    subtitle: 'Foundation',
+    description: 'Our core AI ecosystem — where simplicity meets intelligence.',
+    icon: <Layers className="w-8 h-8" />,
+    gradient: 'from-cyan-400 to-blue-500',
+    glowColor: 'rgba(34, 211, 238, 0.4)'
   },
   {
     name: 'NavAIgate',
     subtitle: 'Enablement',
-    color: 'from-purple-400/80 to-pink-500/80',
-    glowColor: 'purple',
-    delay: 0.2
+    description: 'Strategic AI services and consulting for your journey.',
+    icon: <Navigation className="w-8 h-8" />,
+    gradient: 'from-purple-400 to-pink-500',
+    glowColor: 'rgba(192, 132, 252, 0.4)'
   },
   {
-    name: 'Bluplai',
-    subtitle: 'Foundation',
-    color: 'from-cyan-400/80 to-blue-500/80',
-    glowColor: 'cyan',
-    delay: 0
+    name: 'MovAI',
+    subtitle: 'Movement',
+    description: 'Connecting Plaiers worldwide who believe in the future.',
+    icon: <Activity className="w-8 h-8" />,
+    gradient: 'from-orange-400 to-yellow-500',
+    glowColor: 'rgba(251, 146, 60, 0.4)'
   }
 ];
 
 const EcosystemVisualization: React.FC = () => {
-  const [isHovered, setIsHovered] = useState<number | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
+  // Auto-cycle through layers
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 300);
-    return () => clearTimeout(timer);
-  }, []);
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % layers.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const goToNext = () => {
+    setIsAutoPlaying(false);
+    setActiveIndex((prev) => (prev + 1) % layers.length);
+  };
+
+  const goToPrev = () => {
+    setIsAutoPlaying(false);
+    setActiveIndex((prev) => (prev - 1 + layers.length) % layers.length);
+  };
+
+  const goToIndex = (index: number) => {
+    setIsAutoPlaying(false);
+    setActiveIndex(index);
+  };
 
   return (
-    <div className="relative w-full max-w-2xl mx-auto aspect-square flex items-center justify-center">
-      {/* Background glow effects */}
-      <div className="absolute inset-0 overflow-hidden rounded-2xl">
-        <div className="absolute top-1/4 left-1/4 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/4 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-1/4 left-1/3 w-44 h-44 bg-orange-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <div className="relative w-full max-w-4xl mx-auto">
+      {/* Background glows */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full blur-3xl"
+          animate={{
+            backgroundColor: layers[activeIndex].glowColor,
+          }}
+          transition={{ duration: 0.5 }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full blur-3xl opacity-50"
+          animate={{
+            backgroundColor: layers[(activeIndex + 1) % layers.length].glowColor,
+          }}
+          transition={{ duration: 0.5 }}
+        />
       </div>
 
-      {/* 3D Scene Container */}
-      <div
-        className="relative preserve-3d"
-        style={{
-          perspective: '1000px',
-          perspectiveOrigin: '50% 50%'
-        }}
-      >
-        {/* Isometric container with rotation */}
-        <motion.div
-          className="relative"
+      <div className="relative">
+        {/* 3D Isometric Stack */}
+        <div
+          className="relative h-[350px] md:h-[400px] mx-auto"
           style={{
-            transformStyle: 'preserve-3d',
-            transform: 'rotateX(60deg) rotateZ(-45deg)'
+            perspective: '1200px',
+            perspectiveOrigin: '50% 50%'
           }}
-          animate={{
-            rotateZ: isHovered !== null ? -40 : -45,
-          }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          {/* Stacked Layers */}
-          {layers.map((layer, index) => (
-            <motion.div
-              key={layer.name}
-              className="absolute cursor-pointer"
-              style={{
-                transformStyle: 'preserve-3d',
-                width: '280px',
-                height: '280px',
-                left: '-140px',
-                top: '-140px',
-              }}
-              initial={{
-                opacity: 0,
-                translateZ: -100,
-                translateY: 50
-              }}
-              animate={{
-                opacity: isVisible ? 1 : 0,
-                translateZ: isHovered === index ? (index * 60) + 30 : index * 60,
-                translateY: 0,
-                scale: isHovered === index ? 1.05 : 1
-              }}
-              transition={{
-                duration: 0.8,
-                delay: layer.delay,
-                ease: 'easeOut'
-              }}
-              onMouseEnter={() => setIsHovered(index)}
-              onMouseLeave={() => setIsHovered(null)}
-            >
-              {/* Layer platform */}
-              <div
-                className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${layer.color} backdrop-blur-sm border border-white/20 shadow-2xl`}
-                style={{
-                  boxShadow: isHovered === index
-                    ? `0 0 40px ${layer.glowColor}, 0 25px 50px rgba(0,0,0,0.5)`
-                    : '0 25px 50px rgba(0,0,0,0.3)'
-                }}
-              >
-                {/* Grid pattern overlay */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-20"
-                  style={{
-                    backgroundImage: `
-                      linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-                    `,
-                    backgroundSize: '20px 20px'
-                  }}
-                ></div>
+          {/* Isometric container */}
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              transformStyle: 'preserve-3d',
+            }}
+          >
+            {layers.map((layer, index) => {
+              const isActive = index === activeIndex;
+              const offset = index - activeIndex;
 
-                {/* Animated pulse ring */}
+              // Calculate 3D positions - more front-facing
+              const zOffset = isActive ? 60 : offset * 20;
+              const yOffset = isActive ? 0 : offset * 30;
+              const xOffset = isActive ? 0 : offset * 15;
+              const scale = isActive ? 1.05 : 0.9 - Math.abs(offset) * 0.05;
+              const opacity = isActive ? 1 : 0.5 - Math.abs(offset) * 0.1;
+              const rotateY = isActive ? 0 : offset * 8;
+
+              return (
                 <motion.div
-                  className="absolute inset-4 rounded-xl border border-white/30"
+                  key={layer.name}
+                  className="absolute cursor-pointer"
+                  style={{
+                    width: '300px',
+                    height: '300px',
+                    transformStyle: 'preserve-3d',
+                  }}
                   animate={{
-                    opacity: [0.3, 0.6, 0.3],
-                    scale: [1, 1.02, 1]
+                    z: zOffset,
+                    y: yOffset,
+                    x: xOffset,
+                    scale,
+                    opacity: Math.max(opacity, 0.2),
+                    rotateX: 10,  // Much less tilt - more front-facing
+                    rotateZ: 0,   // No rotation - text is straight
+                    rotateY,
                   }}
                   transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: layer.delay
+                    duration: 0.6,
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 20
                   }}
-                />
-
-                {/* Content */}
-                <div
-                  className="absolute inset-0 flex flex-col items-center justify-center"
-                  style={{
-                    transform: 'rotateZ(45deg) rotateX(-60deg)',
-                    transformStyle: 'preserve-3d'
-                  }}
+                  onClick={() => goToIndex(index)}
+                  whileHover={!isActive ? { scale: scale + 0.05, opacity: opacity + 0.1 } : {}}
                 >
-                  <motion.div
-                    className="text-center"
-                    animate={{
-                      y: isHovered === index ? -5 : 0
+                  {/* Main platform */}
+                  <div
+                    className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${layer.gradient}`}
+                    style={{
+                      boxShadow: isActive
+                        ? `0 30px 60px rgba(0,0,0,0.5), 0 0 40px ${layer.glowColor}`
+                        : '0 20px 40px rgba(0,0,0,0.3)',
+                      transform: 'translateZ(0)'
                     }}
                   >
-                    <h4 className="text-xl md:text-2xl font-bold text-white drop-shadow-lg">
-                      {layer.name}
-                    </h4>
-                    <p className="text-sm text-white/80 mt-1">
-                      {layer.subtitle}
-                    </p>
-                  </motion.div>
-                </div>
+                    {/* Grid overlay */}
+                    <div
+                      className="absolute inset-0 rounded-2xl opacity-20"
+                      style={{
+                        backgroundImage: `
+                          linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)
+                        `,
+                        backgroundSize: '25px 25px'
+                      }}
+                    />
 
-                {/* Corner accents */}
-                <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 border-white/40 rounded-tl"></div>
-                <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-white/40 rounded-tr"></div>
-                <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-white/40 rounded-bl"></div>
-                <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 border-white/40 rounded-br"></div>
-              </div>
+                    {/* Glowing border */}
+                    <div className={`absolute inset-0 rounded-2xl border-2 ${isActive ? 'border-white/40' : 'border-white/20'}`} />
 
-              {/* Side panel (left) */}
-              <div
-                className={`absolute bg-gradient-to-b ${layer.color} opacity-60`}
-                style={{
-                  width: '280px',
-                  height: '20px',
-                  transform: 'rotateX(-90deg) translateZ(10px)',
-                  transformOrigin: 'bottom',
-                  top: '280px',
-                  left: '0'
-                }}
+                    {/* Pulsing inner border */}
+                    {isActive && (
+                      <motion.div
+                        className="absolute inset-3 rounded-xl border border-white/30"
+                        animate={{ opacity: [0.3, 0.7, 0.3] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
+                    )}
+
+                    {/* Content - now readable without counter-rotation */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
+                      <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center text-white mb-4 shadow-lg">
+                        {layer.icon}
+                      </div>
+                      <h4 className="text-2xl font-bold text-white drop-shadow-lg mb-1">
+                        {layer.name}
+                      </h4>
+                      <p className="text-base text-white/90 font-medium">
+                        {layer.subtitle}
+                      </p>
+                    </div>
+
+                    {/* Corner accents */}
+                    <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 border-white/50 rounded-tl" />
+                    <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-white/50 rounded-tr" />
+                    <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-white/50 rounded-bl" />
+                    <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 border-white/50 rounded-br" />
+                  </div>
+
+                  {/* 3D depth - bottom edge */}
+                  <div
+                    className={`absolute bg-gradient-to-b ${layer.gradient}`}
+                    style={{
+                      width: '300px',
+                      height: '15px',
+                      bottom: '0',
+                      left: '0',
+                      transform: 'rotateX(-90deg) translateZ(-7px)',
+                      transformOrigin: 'bottom',
+                      filter: 'brightness(0.6)',
+                      borderRadius: '0 0 16px 16px'
+                    }}
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Active layer info */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeIndex}
+            className="text-center mt-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+          >
+            <p className="text-gray-300 max-w-md mx-auto">
+              {layers[activeIndex].description}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Navigation controls */}
+        <div className="flex items-center justify-center gap-4 mt-6">
+          <button
+            onClick={goToPrev}
+            className="w-10 h-10 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Dots */}
+          <div className="flex gap-2">
+            {layers.map((layer, index) => (
+              <button
+                key={layer.name}
+                onClick={() => goToIndex(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === activeIndex
+                    ? `w-8 bg-gradient-to-r ${layer.gradient}`
+                    : 'w-2 bg-white/30 hover:bg-white/50'
+                }`}
               />
+            ))}
+          </div>
 
-              {/* Side panel (right) */}
-              <div
-                className={`absolute bg-gradient-to-b ${layer.color} opacity-50`}
-                style={{
-                  width: '20px',
-                  height: '280px',
-                  transform: 'rotateY(90deg) translateZ(270px)',
-                  transformOrigin: 'left',
-                  top: '0',
-                  left: '0'
-                }}
-              />
-            </motion.div>
-          ))}
+          <button
+            onClick={goToNext}
+            className="w-10 h-10 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
 
-          {/* Connection beams between layers */}
-          {[0, 1].map((i) => (
-            <motion.div
-              key={`beam-${i}`}
-              className="absolute"
-              style={{
-                width: '4px',
-                height: '60px',
-                left: '-2px',
-                top: '-30px',
-                transformStyle: 'preserve-3d',
-                transform: `translateZ(${i * 60 + 30}px)`
-              }}
-              initial={{ opacity: 0, scaleY: 0 }}
-              animate={{
-                opacity: isVisible ? 0.6 : 0,
-                scaleY: isVisible ? 1 : 0
-              }}
-              transition={{ duration: 0.5, delay: 0.8 + i * 0.2 }}
-            >
-              <div className="w-full h-full bg-gradient-to-t from-transparent via-white/50 to-transparent rounded-full"></div>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Auto-play indicator */}
+        <div className="text-center mt-4">
+          <button
+            onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+            className="text-xs text-gray-500 hover:text-gray-400 transition-colors"
+          >
+            {isAutoPlaying ? '⏸ Auto-playing' : '▶ Click to auto-play'}
+          </button>
+        </div>
       </div>
 
-      {/* Floating particles */}
-      {[...Array(8)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 rounded-full bg-white/30"
-          style={{
-            left: `${20 + (i * 10)}%`,
-            top: `${15 + (i * 8)}%`,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.2, 0.6, 0.2],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{
-            duration: 3 + i * 0.5,
-            repeat: Infinity,
-            delay: i * 0.3
-          }}
-        />
-      ))}
-
-      {/* Labels */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-8 text-xs">
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"></div>
-          <span className="text-gray-400">Foundation</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-purple-400 to-pink-500"></div>
-          <span className="text-gray-400">Enablement</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-yellow-500"></div>
-          <span className="text-gray-400">Movement</span>
-        </div>
+      {/* Legend */}
+      <div className="flex justify-center gap-6 mt-8 text-sm">
+        {layers.map((layer, index) => (
+          <button
+            key={layer.name}
+            onClick={() => goToIndex(index)}
+            className={`flex items-center gap-2 transition-opacity ${
+              index === activeIndex ? 'opacity-100' : 'opacity-50 hover:opacity-75'
+            }`}
+          >
+            <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${layer.gradient}`} />
+            <span className="text-gray-400">{layer.subtitle}</span>
+          </button>
+        ))}
       </div>
     </div>
   );

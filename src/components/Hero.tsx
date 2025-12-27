@@ -22,6 +22,22 @@ const Hero: React.FC = () => {
       <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full blur-xl float"></div>
       <div className="absolute top-40 right-20 w-32 h-32 bg-purple-500/20 rounded-full blur-xl float-reverse"></div>
       <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-teal-500/20 rounded-full blur-xl pulse-slow"></div>
+
+      {/* Floating Robot Mascots */}
+      <div className="absolute bottom-24 left-4 md:left-12 lg:left-24 w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 float z-10 opacity-80 hover:opacity-100 transition-opacity">
+        <img
+          src="/mascot-cap.png"
+          alt="Plaier Mascot"
+          className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(250,204,21,0.4)]"
+        />
+      </div>
+      <div className="absolute bottom-32 right-4 md:right-12 lg:right-24 w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 float-reverse z-10 opacity-80 hover:opacity-100 transition-opacity">
+        <img
+          src="/mascot-hat.png"
+          alt="Plaier Mascot"
+          className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(250,204,21,0.4)]"
+        />
+      </div>
       
       {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-50 p-4 md:p-6">

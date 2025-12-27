@@ -39,9 +39,9 @@ const Plaiers: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Character Placeholders */}
-        <div className="flex flex-wrap justify-center gap-12 mb-16">
-          {/* Male Character Placeholder */}
+        {/* Character Images */}
+        <div className="flex flex-wrap justify-center gap-12 md:gap-16 mb-16">
+          {/* The Innovator */}
           <motion.div
             className="flex flex-col items-center"
             initial={{ opacity: 0, y: 24 }}
@@ -49,14 +49,19 @@ const Plaiers: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <div className="relative">
-              <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-cyan-400/20 to-blue-500/20 border-2 border-cyan-400/30 flex items-center justify-center group hover:border-cyan-400/50 transition-all duration-300">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-cyan-400/10 to-blue-500/10 flex items-center justify-center">
-                  <Users className="w-16 h-16 md:w-20 md:h-20 text-cyan-400/60" />
-                </div>
+            <div className="relative group">
+              {/* Outer glow ring */}
+              <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-cyan-400/30 to-blue-500/30 blur-lg group-hover:blur-xl transition-all duration-300 opacity-60 group-hover:opacity-80"></div>
+              {/* Image container */}
+              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-cyan-400/40 group-hover:border-cyan-400/60 transition-all duration-300 shadow-2xl shadow-cyan-500/20">
+                <img
+                  src="/plaier-innovator.png"
+                  alt="The Innovator"
+                  className="w-full h-full object-cover"
+                />
               </div>
               {/* Sparkle decoration */}
-              <Sparkles className="absolute top-4 right-4 w-6 h-6 text-yellow-400/60" />
+              <Sparkles className="absolute -top-1 -right-1 w-7 h-7 text-yellow-400" />
             </div>
             <h3 className="mt-6 text-2xl md:text-3xl font-bold text-white">The Innovator</h3>
             <p className="text-lg text-gray-300 text-center max-w-xs mt-2 leading-relaxed">
@@ -64,7 +69,7 @@ const Plaiers: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Female Character Placeholder */}
+          {/* The Creator */}
           <motion.div
             className="flex flex-col items-center"
             initial={{ opacity: 0, y: 24 }}
@@ -72,14 +77,19 @@ const Plaiers: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <div className="relative">
-              <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-purple-400/20 to-pink-500/20 border-2 border-purple-400/30 flex items-center justify-center group hover:border-purple-400/50 transition-all duration-300">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-purple-400/10 to-pink-500/10 flex items-center justify-center">
-                  <Users className="w-16 h-16 md:w-20 md:h-20 text-purple-400/60" />
-                </div>
+            <div className="relative group">
+              {/* Outer glow ring */}
+              <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-purple-400/30 to-pink-500/30 blur-lg group-hover:blur-xl transition-all duration-300 opacity-60 group-hover:opacity-80"></div>
+              {/* Image container */}
+              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-purple-400/40 group-hover:border-purple-400/60 transition-all duration-300 shadow-2xl shadow-purple-500/20">
+                <img
+                  src="/plaier-creator.png"
+                  alt="The Creator"
+                  className="w-full h-full object-cover"
+                />
               </div>
               {/* Sparkle decoration */}
-              <Sparkles className="absolute top-4 right-4 w-6 h-6 text-pink-400/60" />
+              <Sparkles className="absolute -top-1 -right-1 w-7 h-7 text-pink-400" />
             </div>
             <h3 className="mt-6 text-2xl md:text-3xl font-bold text-white">The Creator</h3>
             <p className="text-lg text-gray-300 text-center max-w-xs mt-2 leading-relaxed">
@@ -96,11 +106,8 @@ const Plaiers: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <p className="text-xl md:text-2xl text-gray-300 mb-4">
+          <p className="text-xl md:text-2xl text-gray-300">
             Are <span className="text-yellow-400 font-semibold">you</span> a Plaier?
-          </p>
-          <p className="text-gray-400">
-            Character illustrations coming soon
           </p>
         </motion.div>
       </div>

@@ -106,7 +106,7 @@ const Features: React.FC = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We're creating the tools that will define the next generation of work.
+            We're building new solutions that will define the next generation of work.
             Simple, playful, and designed for people who want to make an impact.
           </p>
         </div>

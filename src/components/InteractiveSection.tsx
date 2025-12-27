@@ -41,6 +41,55 @@ const InteractiveSection: React.FC = () => {
           </p>
         </motion.div>
 
+        {/* Founder Images with Questions */}
+        <motion.div
+          className="grid md:grid-cols-2 gap-8 mb-20"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {/* Founder 1 - Solution/Clarity */}
+          <div className="relative group">
+            <div className="rounded-3xl overflow-hidden border border-cyan-400/20 bg-gray-900/40 backdrop-blur">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src="/founder-solution.png"
+                  alt="AI Workflow Solutions"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <p className="text-xl md:text-2xl font-medium text-cyan-400 italic">
+                  "How many AI tools are part of your daily workflow?"
+                </p>
+              </div>
+            </div>
+            {/* Glow effect */}
+            <div className="absolute -inset-1 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 -z-10"></div>
+          </div>
+
+          {/* Founder 2 - Problem/Complexity */}
+          <div className="relative group">
+            <div className="rounded-3xl overflow-hidden border border-purple-400/20 bg-gray-900/40 backdrop-blur">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src="/founder-problem.png"
+                  alt="AI Challenges"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <p className="text-xl md:text-2xl font-medium text-purple-400 italic">
+                  "Are you struggling with certain AI tools or processes?"
+                </p>
+              </div>
+            </div>
+            {/* Glow effect */}
+            <div className="absolute -inset-1 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 -z-10"></div>
+          </div>
+        </motion.div>
+
         {/* Interactive Components */}
         <div className="space-y-20">
           {/* AI Knowledge Level */}
