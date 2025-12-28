@@ -91,7 +91,7 @@ const EcosystemVisualization: React.FC = () => {
       <div className="relative">
         {/* 3D Isometric Stack */}
         <div
-          className="relative h-[350px] md:h-[400px] mx-auto"
+          className="relative h-[280px] sm:h-[320px] md:h-[400px] mx-auto"
           style={{
             perspective: '1200px',
             perspectiveOrigin: '50% 50%'
@@ -119,10 +119,8 @@ const EcosystemVisualization: React.FC = () => {
               return (
                 <motion.div
                   key={layer.name}
-                  className="absolute cursor-pointer"
+                  className="absolute cursor-pointer w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px]"
                   style={{
-                    width: '300px',
-                    height: '300px',
                     transformStyle: 'preserve-3d',
                   }}
                   animate={{
@@ -179,14 +177,14 @@ const EcosystemVisualization: React.FC = () => {
                     )}
 
                     {/* Content - now readable without counter-rotation */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-                      <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center text-white mb-4 shadow-lg">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-4 sm:p-6">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center text-white mb-2 sm:mb-4 shadow-lg">
                         {layer.icon}
                       </div>
-                      <h4 className="text-2xl font-bold text-white drop-shadow-lg mb-1">
+                      <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-white drop-shadow-lg mb-1">
                         {layer.name}
                       </h4>
-                      <p className="text-base text-white/90 font-medium">
+                      <p className="text-sm sm:text-base text-white/90 font-medium">
                         {layer.subtitle}
                       </p>
                     </div>
@@ -200,9 +198,8 @@ const EcosystemVisualization: React.FC = () => {
 
                   {/* 3D depth - bottom edge */}
                   <div
-                    className={`absolute bg-gradient-to-b ${layer.gradient}`}
+                    className={`absolute bg-gradient-to-b ${layer.gradient} w-[200px] sm:w-[250px] md:w-[300px]`}
                     style={{
-                      width: '300px',
                       height: '15px',
                       bottom: '0',
                       left: '0',
@@ -278,16 +275,16 @@ const EcosystemVisualization: React.FC = () => {
       </div>
 
       {/* Legend */}
-      <div className="flex justify-center gap-6 mt-8 text-sm">
+      <div className="flex flex-wrap justify-center gap-3 sm:gap-6 mt-6 sm:mt-8 text-xs sm:text-sm">
         {layers.map((layer, index) => (
           <button
             key={layer.name}
             onClick={() => goToIndex(index)}
-            className={`flex items-center gap-2 transition-opacity ${
+            className={`flex items-center gap-1.5 sm:gap-2 transition-opacity ${
               index === activeIndex ? 'opacity-100' : 'opacity-50 hover:opacity-75'
             }`}
           >
-            <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${layer.gradient}`} />
+            <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-gradient-to-r ${layer.gradient}`} />
             <span className="text-gray-400">{layer.subtitle}</span>
           </button>
         ))}

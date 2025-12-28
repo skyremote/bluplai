@@ -23,7 +23,7 @@ const Message: React.FC = () => {
             <span className="text-sm text-gray-300">Our Message</span>
           </div>
 
-          <div className="space-y-6 text-lg md:text-xl text-gray-300 leading-relaxed">
+          <div className="space-y-4 sm:space-y-6 text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed px-2">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ const Message: React.FC = () => {
             </motion.p>
 
             <motion.p
-              className="text-2xl md:text-3xl font-bold text-white pt-4"
+              className="text-xl sm:text-2xl md:text-3xl font-bold text-white pt-4"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}

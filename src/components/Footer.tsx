@@ -3,15 +3,15 @@ import { Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="py-16 px-6 border-t border-gray-800 bg-gray-900">
+    <footer className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 border-t border-gray-800 bg-gray-900">
       <div className="max-w-7xl mx-auto">
         <div className="text-center">
           {/* Brand */}
-          <div className="mb-8">
-            <div className="flex items-center justify-center mb-6">
-              <img src="/bluplai-logo-white.png" alt="Bluplai" className="h-24" />
+          <div className="mb-6 md:mb-8">
+            <div className="flex items-center justify-center mb-4 md:mb-6">
+              <img src="/bluplai-logo-white.png" alt="Bluplai" className="h-16 sm:h-20 md:h-24" />
             </div>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-400 text-sm sm:text-base mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed px-2">
               From Platformers to Plaiers — we're building playful, accessible AI processes and solutions for the next generation of Plaiers.
             </p>
             

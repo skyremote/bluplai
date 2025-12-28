@@ -99,42 +99,42 @@ const Features: React.FC = () => {
               className="text-sm text-gray-300"
             />
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6">
             Built for
             <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Plaiers
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-2">
             We're building new solutions that will define the next generation of work.
             Simple, playful, and designed for people who want to make an impact.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
               data-index={index}
-              className={`feature-card group relative p-8 rounded-2xl glass hover-lift cursor-pointer transition-all duration-500 ${
+              className={`feature-card group relative p-5 sm:p-6 md:p-8 rounded-2xl glass hover-lift cursor-pointer transition-all duration-500 ${
                 visibleFeatures[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Gradient Border */}
               <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
-              
+
               {/* Icon */}
-              <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center text-white mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
                 {feature.icon}
               </div>
-              
+
               {/* Content */}
-              <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 md:mb-4 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
                 {feature.title}
               </h3>
-              
-              <p className="text-gray-300 mb-6 leading-relaxed">
+
+              <p className="text-gray-300 text-sm sm:text-base mb-4 md:mb-6 leading-relaxed">
                 {feature.description}
               </p>
               

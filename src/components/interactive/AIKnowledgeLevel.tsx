@@ -91,22 +91,35 @@ const AIKnowledgeLevel: React.FC = () => {
         />
       </motion.div>
 
+      {/* Click hint */}
+      {!selected && (
+        <motion.p
+          className="text-center text-gray-500 text-sm mb-4 flex items-center justify-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <span className="inline-block animate-bounce">👆</span>
+          <span>Click to select your level</span>
+        </motion.p>
+      )}
+
       {/* Level Selection Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
         {levels.map((level, index) => (
           <motion.button
             key={level.id}
             onClick={() => setSelected(level.id)}
-            className={`relative p-4 rounded-2xl border transition-all duration-300 text-center ${
+            className={`relative p-4 rounded-2xl border transition-all duration-300 text-center cursor-pointer ${
               selected === level.id
                 ? `border-white/30 bg-gradient-to-b ${level.bgColor}`
                 : 'border-white/10 bg-gray-900/40 hover:border-white/20 hover:bg-gray-900/60'
-            }`}
+            } ${!selected && index === 0 ? 'ring-2 ring-yellow-400/50 ring-offset-2 ring-offset-gray-900' : ''}`}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 1.05, borderColor: 'rgba(255,255,255,0.3)' }}
             whileTap={{ scale: 0.98 }}
           >
             {/* Selection indicator */}

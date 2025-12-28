@@ -72,24 +72,24 @@ const Movement: React.FC = () => {
               className="text-sm text-gray-300"
             />
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6">
             Join the
             <span className="block bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
               Movement
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-2">
             Connect with forward-thinking individuals and teams building the future of intelligent work.
             Together, we're creating something meaningful.
           </p>
         </motion.div>
 
         {/* Movement Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
           {movementItems.map((item, index) => (
             <motion.div
               key={item.title}
-              className={`relative p-6 rounded-2xl border ${item.borderColor} bg-gray-900/60 backdrop-blur group hover:border-white/20 transition-all duration-300`}
+              className={`relative p-4 sm:p-5 md:p-6 rounded-2xl border ${item.borderColor} bg-gray-900/60 backdrop-blur group hover:border-white/20 transition-all duration-300`}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -99,15 +99,15 @@ const Movement: React.FC = () => {
               <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
 
               {/* Icon */}
-              <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center text-white mb-4`}>
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center text-white mb-3 md:mb-4`}>
                 {item.icon}
               </div>
 
               {/* Content */}
-              <h3 className={`text-xl font-bold mb-2 bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
+              <h3 className={`text-lg sm:text-xl font-bold mb-2 bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
                 {item.title}
               </h3>
-              <p className="text-gray-300 text-sm leading-relaxed mb-4">{item.description}</p>
+              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-3 md:mb-4">{item.description}</p>
 
               {/* Subcategories */}
               <div className="flex flex-wrap gap-2">

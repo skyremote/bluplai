@@ -600,7 +600,7 @@ const David: React.FC = () => {
               >
                 <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 md:mb-4">
                   <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                    Plai
+                    Bluplai
                   </span>{' '}
                   unifies the entire workflow
                 </h2>
@@ -690,7 +690,7 @@ const David: React.FC = () => {
               <div className="grid grid-cols-2 gap-4 md:gap-12">
                 {[
                   {
-                    name: 'Leandro Licausi',
+                    name: 'Leandro Li Causi',
                     title: 'The Visionary',
                     desc: 'Defines the "why." Shapes the strategy, narrative, and user experience.',
                     image: '/plaier-creator.png',

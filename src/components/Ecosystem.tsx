@@ -64,13 +64,13 @@ const Ecosystem: React.FC = () => {
               className="text-sm text-gray-300"
             />
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6">
             Our
             <span className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-orange-400 bg-clip-text text-transparent">
               Ecosystem
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-2">
             Three brands, one vision. Together, we're building a future where AI and humans work in harmony.
           </p>
         </motion.div>
@@ -104,11 +104,11 @@ const Ecosystem: React.FC = () => {
         </motion.div>
 
         {/* Ecosystem Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12">
           {ecosystemBrands.map((brand, index) => (
             <motion.div
               key={brand.name}
-              className={`relative p-8 rounded-2xl border ${brand.borderColor} bg-gray-900/60 backdrop-blur group hover:border-white/20 transition-all duration-300`}
+              className={`relative p-5 sm:p-6 md:p-8 rounded-2xl border ${brand.borderColor} bg-gray-900/60 backdrop-blur group hover:border-white/20 transition-all duration-300`}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -118,16 +118,16 @@ const Ecosystem: React.FC = () => {
               <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${brand.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
 
               {/* Icon */}
-              <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${brand.color} flex items-center justify-center text-white mb-6`}>
+              <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-r ${brand.color} flex items-center justify-center text-white mb-4 md:mb-6`}>
                 {brand.icon}
               </div>
 
               {/* Content */}
-              <h3 className={`text-2xl font-bold mb-2 bg-gradient-to-r ${brand.color} bg-clip-text text-transparent`}>
+              <h3 className={`text-xl sm:text-2xl font-bold mb-2 bg-gradient-to-r ${brand.color} bg-clip-text text-transparent`}>
                 {brand.name}
               </h3>
-              <p className="text-gray-400 text-sm mb-4">{brand.tagline}</p>
-              <p className="text-gray-300 leading-relaxed">{brand.description}</p>
+              <p className="text-gray-400 text-xs sm:text-sm mb-3 md:mb-4">{brand.tagline}</p>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{brand.description}</p>
             </motion.div>
           ))}
         </div>

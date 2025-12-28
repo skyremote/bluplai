@@ -2,12 +2,10 @@ import React from 'react';
 import Hero from '../components/Hero';
 import Message from '../components/Message';
 import Benefits from '../components/Benefits';
-import Manifesto from '../components/Manifesto';
-import Features from '../components/Features';
-import ProcessSection from '../components/ProcessSection';
 import AIHelpSection from '../components/AIHelpSection';
 import Plaiers from '../components/Plaiers';
 import Ecosystem from '../components/Ecosystem';
+import Solutions from '../components/Solutions';
 import Movement from '../components/Movement';
 import InteractiveSection from '../components/InteractiveSection';
 import Podcast from '../components/Podcast';
@@ -20,13 +18,11 @@ const Home: React.FC = () => {
       <Hero />
       <Message />
       <Benefits />
-      <Manifesto />
-      <Features />
-      <ProcessSection />
+      <Ecosystem />
+      <Solutions />
+      <Movement />
       <AIHelpSection />
       <Plaiers />
-      <Ecosystem />
-      <Movement />
       <InteractiveSection />
       <Podcast />
       <ContactCTA />

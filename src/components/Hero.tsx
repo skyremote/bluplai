@@ -23,15 +23,15 @@ const Hero: React.FC = () => {
       <div className="absolute top-40 right-20 w-32 h-32 bg-purple-500/20 rounded-full blur-xl float-reverse"></div>
       <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-teal-500/20 rounded-full blur-xl pulse-slow"></div>
 
-      {/* Floating Robot Mascots */}
-      <div className="absolute bottom-24 left-4 md:left-12 lg:left-24 w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 float z-10 opacity-80 hover:opacity-100 transition-opacity">
+      {/* Floating Robot Mascots - hidden on very small screens */}
+      <div className="hidden sm:block absolute bottom-24 left-4 md:left-12 lg:left-24 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 float z-10 opacity-80 hover:opacity-100 transition-opacity">
         <img
           src="/mascot-cap.png"
           alt="Plaier Mascot"
           className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(250,204,21,0.4)]"
         />
       </div>
-      <div className="absolute bottom-32 right-4 md:right-12 lg:right-24 w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 float-reverse z-10 opacity-80 hover:opacity-100 transition-opacity">
+      <div className="hidden sm:block absolute bottom-32 right-4 md:right-12 lg:right-24 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 float-reverse z-10 opacity-80 hover:opacity-100 transition-opacity">
         <img
           src="/mascot-hat.png"
           alt="Plaier Mascot"
@@ -47,8 +47,8 @@ const Hero: React.FC = () => {
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#values" className="text-gray-300 hover:text-white transition-colors">Values</a>
-            <a href="#manifesto" className="text-gray-300 hover:text-white transition-colors">Manifesto</a>
             <a href="#ecosystem" className="text-gray-300 hover:text-white transition-colors">Ecosystem</a>
+            <a href="#solutions" className="text-gray-300 hover:text-white transition-colors">Solutions</a>
             <a href="#movement" className="text-gray-300 hover:text-white transition-colors">Movement</a>
             <Link to="/about" className="text-gray-300 hover:text-white transition-colors">About</Link>
             <ContactDropdown />
@@ -75,8 +75,8 @@ const Hero: React.FC = () => {
             </div>
             <div className="px-6 py-4 space-y-4">
               <a href="#values" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Values</a>
-              <a href="#manifesto" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Manifesto</a>
               <a href="#ecosystem" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Ecosystem</a>
+              <a href="#solutions" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Solutions</a>
               <a href="#movement" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>Movement</a>
               <Link to="/about" className="block text-lg text-gray-200" onClick={() => setMenuOpen(false)}>About</Link>
               <div className="pt-2"><ContactDropdown /></div>

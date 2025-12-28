@@ -73,12 +73,12 @@ const AIHelpSection: React.FC = () => {
             />
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4">
             <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
               Struggling with AI?
             </span>
           </h2>
-          <p className="text-2xl text-gray-300 mb-8">Tell us more.</p>
+          <p className="text-xl sm:text-2xl text-gray-300 mb-6 md:mb-8">Tell us more.</p>
 
           {!showForm && !submitted && (
             <motion.button
@@ -141,15 +141,15 @@ const AIHelpSection: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h3 className="text-2xl md:text-3xl font-bold text-center text-white mb-8">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-white mb-6 md:mb-8">
             We can also help you out with...
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {helpServices.map((service, index) => (
               <motion.div
                 key={index}
-                className="group p-5 rounded-2xl border border-white/10 bg-gray-900/40 hover:border-yellow-400/30 hover:bg-gray-800/60 transition-all duration-300 cursor-pointer"
+                className="group p-4 sm:p-5 rounded-2xl border border-white/10 bg-gray-900/40 hover:border-yellow-400/30 hover:bg-gray-800/60 transition-all duration-300 cursor-pointer"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -157,15 +157,15 @@ const AIHelpSection: React.FC = () => {
                 whileHover={{ y: -4 }}
               >
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center text-yellow-400 group-hover:bg-yellow-400/20 transition-colors">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-yellow-400/10 border border-yellow-400/20 flex items-center justify-center text-yellow-400 group-hover:bg-yellow-400/20 transition-colors flex-shrink-0">
                     {service.icon}
                   </div>
                   <div>
-                    <p className="text-white font-medium leading-snug">
+                    <p className="text-white text-sm sm:text-base font-medium leading-snug">
                       {service.title}
                     </p>
                     {service.subtitle && (
-                      <p className="text-gray-400 text-sm mt-1">{service.subtitle}</p>
+                      <p className="text-gray-400 text-xs sm:text-sm mt-1">{service.subtitle}</p>
                     )}
                   </div>
                 </div>

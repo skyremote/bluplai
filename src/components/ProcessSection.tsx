@@ -110,19 +110,19 @@ const ProcessSection: React.FC = () => {
               className="text-sm text-gray-300"
             />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
             How We
             <span className="block bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
               Work With You
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-2">
             A proven methodology to help you understand, build, and scale AI solutions.
           </p>
         </motion.div>
 
         {/* Process Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {processSteps.map((step, index) => (
             <motion.div
               key={index}
@@ -133,21 +133,21 @@ const ProcessSection: React.FC = () => {
               viewport={{ once: true, amount: 0.2 }}
             >
               {/* Card */}
-              <div className="h-full p-6 rounded-2xl border-2 border-yellow-400/30 bg-gray-900/60 backdrop-blur hover:border-yellow-400/50 transition-all duration-300">
+              <div className="h-full p-4 sm:p-5 md:p-6 rounded-2xl border-2 border-yellow-400/30 bg-gray-900/60 backdrop-blur hover:border-yellow-400/50 transition-all duration-300">
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-gray-900 mb-4">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-yellow-400 flex items-center justify-center text-gray-900 mb-3 md:mb-4">
                   {step.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-yellow-400 italic mb-4">
+                <h3 className="text-lg sm:text-xl font-bold text-yellow-400 italic mb-3 md:mb-4">
                   {step.title}
                 </h3>
 
                 {/* Items List */}
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-1.5 sm:space-y-2 mb-4 md:mb-6">
                   {step.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="text-yellow-300/90 text-sm flex items-start">
+                    <li key={itemIndex} className="text-yellow-300/90 text-xs sm:text-sm flex items-start">
                       <span className="mr-2 mt-1.5 w-1 h-1 rounded-full bg-yellow-400 flex-shrink-0"></span>
                       <span className="italic">{item}</span>
                     </li>
@@ -155,7 +155,7 @@ const ProcessSection: React.FC = () => {
                 </ul>
 
                 {/* Subtitle */}
-                <p className="text-yellow-400/70 text-sm italic mt-auto">
+                <p className="text-yellow-400/70 text-xs sm:text-sm italic mt-auto">
                   {step.subtitle}
                 </p>
               </div>

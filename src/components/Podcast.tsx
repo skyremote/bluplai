@@ -27,12 +27,12 @@ const Podcast: React.FC = () => {
               className="text-sm text-gray-300"
             />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6">
             <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
               Podcast
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 md:mb-12 px-2">
             Conversations about AI, people, and the future of work.
             Stories from Plaiers who are shaping what comes next.
           </p>
@@ -65,21 +65,21 @@ const Podcast: React.FC = () => {
 
         {/* Coming Soon Card */}
         <motion.div
-          className="rounded-2xl border border-orange-400/20 bg-gray-900/60 backdrop-blur p-8 md:p-12 text-center"
+          className="rounded-2xl border border-orange-400/20 bg-gray-900/60 backdrop-blur p-6 sm:p-8 md:p-12 text-center"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true, amount: 0.3 }}
         >
           {/* Play Icon */}
-          <div className="w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-br from-orange-400/20 to-red-400/20 border border-orange-400/30 flex items-center justify-center">
-            <Play className="w-10 h-10 text-orange-400 ml-1" />
+          <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-6 md:mb-8 rounded-full bg-gradient-to-br from-orange-400/20 to-red-400/20 border border-orange-400/30 flex items-center justify-center">
+            <Play className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-orange-400 ml-1" />
           </div>
 
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4">
             Coming Soon
           </h3>
-          <p className="text-gray-300 mb-8 max-w-lg mx-auto">
+          <p className="text-gray-300 text-sm sm:text-base mb-6 md:mb-8 max-w-lg mx-auto px-2">
             We're preparing something special. Join our community to be the first to know when we launch.
           </p>
 

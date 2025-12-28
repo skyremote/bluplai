@@ -91,23 +91,23 @@ const Benefits: React.FC = () => {
               className="text-sm text-gray-300"
             />
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6">
             Our
             <span className="block bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
               Values
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-2">
             From Platformers to Plaiers — we're building playful, accessible AI processes and solutions for the next generation of Plaiers.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {values.map((value, index) => (
             <div
               key={index}
               data-index={index}
-              className={`value-card group relative p-8 rounded-2xl glass hover-lift transition-all duration-700 ${
+              className={`value-card group relative p-5 sm:p-6 md:p-8 rounded-2xl glass hover-lift transition-all duration-700 ${
                 visibleValues[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
@@ -116,17 +116,17 @@ const Benefits: React.FC = () => {
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               {/* Icon */}
-              <div className={`${value.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`${value.color} mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
                 {value.icon}
               </div>
 
               {/* Title */}
-              <h3 className={`text-2xl font-bold mb-3 ${value.color}`}>
+              <h3 className={`text-xl sm:text-2xl font-bold mb-2 md:mb-3 ${value.color}`}>
                 {value.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed group-hover:text-white transition-colors duration-300">
                 {value.description}
               </p>
 

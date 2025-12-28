@@ -11,7 +11,7 @@ const ContactCTA: React.FC = () => {
 
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
-          className="rounded-2xl border border-white/10 bg-gray-900/80 backdrop-blur p-8 md:p-16 text-center"
+          className="rounded-2xl border border-white/10 bg-gray-900/80 backdrop-blur p-6 sm:p-8 md:p-16 text-center"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -27,7 +27,7 @@ const ContactCTA: React.FC = () => {
           </motion.div>
 
           <motion.h2
-            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -37,7 +37,7 @@ const ContactCTA: React.FC = () => {
           </motion.h2>
 
           <motion.p
-            className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-2"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
