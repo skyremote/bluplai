@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const David: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = 8;
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev < totalSlides - 1 ? prev + 1 : prev));
@@ -12,6 +14,33 @@ const David: React.FC = () => {
   const prevSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev > 0 ? prev - 1 : prev));
   }, []);
+
+  // Touch handlers for swipe navigation
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (distance > minSwipeDistance) {
+      // Swiped left - go next
+      nextSlide();
+    } else if (distance < -minSwipeDistance) {
+      // Swiped right - go prev
+      prevSlide();
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -63,17 +92,17 @@ const David: React.FC = () => {
               <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
             </div>
 
-            <div className="relative z-10 text-center px-8">
+            <div className="relative z-10 text-center px-4 md:px-8">
               <motion.img
                 src="/bluplai-logo-white.png"
                 alt="Plai"
-                className="h-20 mx-auto mb-12"
+                className="h-12 md:h-20 mx-auto mb-6 md:mb-12"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               />
               <motion.h1
-                className="text-6xl md:text-8xl font-bold mb-8"
+                className="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 md:mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
@@ -87,7 +116,7 @@ const David: React.FC = () => {
 
               {/* Animated eye visual */}
               <motion.div
-                className="mt-12 relative w-32 h-32 mx-auto"
+                className="mt-6 md:mt-12 relative w-20 h-20 md:w-32 md:h-32 mx-auto"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.6 }}
@@ -95,8 +124,8 @@ const David: React.FC = () => {
                 <div className="absolute inset-0 rounded-full border-4 border-cyan-400/50 animate-ping" />
                 <div className="absolute inset-2 rounded-full border-2 border-cyan-400 animate-pulse" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
-                    <div className="w-6 h-6 rounded-full bg-gray-900" />
+                  <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
+                    <div className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-gray-900" />
                   </div>
                 </div>
               </motion.div>
@@ -107,12 +136,12 @@ const David: React.FC = () => {
       case 1:
         // Overview Slide - What/Why/Ask
         return (
-          <div className="h-full w-full flex items-center justify-center relative overflow-hidden px-8">
+          <div className="h-full w-full flex items-center justify-center relative overflow-hidden overflow-y-auto px-4 md:px-8 py-8 md:py-0">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800" />
 
             <div className="relative z-10 max-w-6xl w-full">
               <motion.h2
-                className="text-4xl md:text-5xl font-bold text-center mb-16"
+                className="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-6 md:mb-16"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -121,10 +150,10 @@ const David: React.FC = () => {
                 <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
                   AI-native operating system
                 </span>
-                <br />for customer value.
+                <br className="hidden sm:block" /><span className="sm:hidden"> </span>for customer value.
               </motion.h2>
 
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-3 gap-4 md:gap-8">
                 {[
                   {
                     title: 'THE WHAT',
@@ -153,12 +182,12 @@ const David: React.FC = () => {
                     transition={{ duration: 0.6, delay: 0.2 + i * 0.2 }}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-10 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity`} />
-                    <div className="relative bg-gray-800/50 backdrop-blur border border-white/10 rounded-2xl p-8 h-full">
-                      <div className="text-4xl mb-4">{item.icon}</div>
-                      <h3 className={`text-xl font-bold mb-4 bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                    <div className="relative bg-gray-800/50 backdrop-blur border border-white/10 rounded-2xl p-4 md:p-8 h-full">
+                      <div className="text-2xl md:text-4xl mb-2 md:mb-4">{item.icon}</div>
+                      <h3 className={`text-lg md:text-xl font-bold mb-2 md:mb-4 bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
                         {item.title}
                       </h3>
-                      <p className="text-gray-300 leading-relaxed">
+                      <p className="text-sm md:text-base text-gray-300 leading-relaxed">
                         {item.highlight ? (
                           <>
                             {item.content.split(item.highlight)[0]}
@@ -199,10 +228,10 @@ const David: React.FC = () => {
               ))}
             </svg>
 
-            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 px-8 max-w-7xl">
+            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-6 md:gap-12 px-4 md:px-8 max-w-7xl overflow-y-auto py-8 lg:py-0">
               {/* Chaos visualization */}
               <motion.div
-                className="relative w-full lg:w-1/2 h-[500px]"
+                className="relative w-full lg:w-1/2 h-[250px] md:h-[400px] lg:h-[500px] flex-shrink-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
@@ -210,7 +239,7 @@ const David: React.FC = () => {
                 {/* Central confused person */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
                   <motion.div
-                    className="w-24 h-24 rounded-full bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center text-5xl"
+                    className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center text-3xl md:text-5xl"
                     animate={{ rotate: [0, 5, -5, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
@@ -222,7 +251,7 @@ const David: React.FC = () => {
                 {chaosApps.map((app, i) => (
                   <motion.div
                     key={app.name}
-                    className="absolute px-3 py-1 rounded-full text-white text-sm font-medium shadow-lg"
+                    className="absolute px-2 py-0.5 md:px-3 md:py-1 rounded-full text-white text-xs md:text-sm font-medium shadow-lg"
                     style={{
                       backgroundColor: app.color,
                       left: app.x,
@@ -268,21 +297,21 @@ const David: React.FC = () => {
 
               {/* Problem text */}
               <motion.div
-                className="lg:w-1/2 text-left"
+                className="lg:w-1/2 text-left px-2 md:px-0"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 md:mb-6">
                   The best teams are{' '}
                   <span className="text-red-400">drowning</span> in a sea of disconnected apps.
                 </h2>
 
-                <p className="text-xl text-gray-400 mb-8">
+                <p className="text-base md:text-xl text-gray-400 mb-4 md:mb-8">
                   This fragmentation creates critical <span className="text-amber-400 font-semibold">'value gaps'</span>:
                 </p>
 
-                <div className="space-y-6">
+                <div className="space-y-3 md:space-y-6">
                   {[
                     { title: 'Lost in Translation', desc: 'Insights from sales discovery never make it to the customer success team.' },
                     { title: 'Broken Promises', desc: 'Success plans are disconnected from the original business case.' },
@@ -290,13 +319,13 @@ const David: React.FC = () => {
                   ].map((item, i) => (
                     <motion.div
                       key={item.title}
-                      className="flex gap-4"
+                      className="flex gap-3 md:gap-4"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 1 + i * 0.2 }}
                     >
-                      <div className="w-2 h-2 rounded-full bg-red-400 mt-2 flex-shrink-0" />
-                      <div>
+                      <div className="w-2 h-2 rounded-full bg-red-400 mt-1.5 md:mt-2 flex-shrink-0" />
+                      <div className="text-sm md:text-base">
                         <span className="font-semibold text-white">{item.title}:</span>{' '}
                         <span className="text-gray-400">{item.desc}</span>
                       </div>
@@ -311,30 +340,30 @@ const David: React.FC = () => {
       case 3:
         // Blueprint Solution Slide - From Fragmented to Unified
         return (
-          <div className="h-full w-full flex items-center justify-center relative overflow-hidden px-8">
+          <div className="h-full w-full flex items-center justify-center relative overflow-hidden overflow-y-auto px-4 md:px-8 py-6 md:py-0">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-cyan-900/5 to-gray-900" />
 
             <div className="relative z-10 max-w-7xl w-full">
               {/* Header */}
               <motion.div
-                className="text-center mb-8"
+                className="text-center mb-4 md:mb-8"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-3">
+                <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 md:mb-3">
                   Our Solution:{' '}
                   <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                     AI-Powered 'Blueprints'
                   </span>
                 </h2>
-                <p className="text-lg text-gray-400">
+                <p className="text-sm md:text-lg text-gray-400 px-2">
                   Bluplai replaces chaos with clarity through modular, intelligent workflows that unify the entire customer journey.
                 </p>
               </motion.div>
 
               {/* Main visual - From Fragmented to Unified */}
-              <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-8">
+              <div className="flex flex-col lg:flex-row items-center justify-center gap-4 md:gap-8 mb-4 md:mb-8">
                 {/* Left - Fragmented */}
                 <motion.div
                   className="text-center"
@@ -342,13 +371,13 @@ const David: React.FC = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <p className="text-lg font-semibold text-gray-400 mb-4">From a Fragmented Lifecycle...</p>
-                  <div className="relative w-48 h-48 mx-auto">
+                  <p className="text-sm md:text-lg font-semibold text-gray-400 mb-2 md:mb-4">From a Fragmented Lifecycle...</p>
+                  <div className="relative w-32 h-32 md:w-48 md:h-48 mx-auto">
                     {/* Chaotic elements */}
                     {['📄', '🔧', '📊', '📝', '💼', '📁'].map((icon, i) => (
                       <motion.div
                         key={i}
-                        className="absolute text-2xl"
+                        className="absolute text-base md:text-2xl"
                         style={{
                           left: `${20 + Math.random() * 60}%`,
                           top: `${20 + Math.random() * 60}%`,
@@ -368,7 +397,7 @@ const David: React.FC = () => {
                       </motion.div>
                     ))}
                     {/* Center hand */}
-                    <div className="absolute inset-0 flex items-center justify-center text-5xl opacity-60">
+                    <div className="absolute inset-0 flex items-center justify-center text-3xl md:text-5xl opacity-60">
                       🤚
                     </div>
                   </div>
@@ -400,10 +429,10 @@ const David: React.FC = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                  <p className="text-lg font-semibold text-gray-400 mb-4">...To a Unified Journey.</p>
+                  <p className="text-sm md:text-lg font-semibold text-gray-400 mb-2 md:mb-4">...To a Unified Journey.</p>
 
                   {/* Two overlapping circles like the original */}
-                  <div className="relative w-[340px] h-[220px] mx-auto">
+                  <div className="relative w-[240px] h-[160px] md:w-[340px] md:h-[220px] mx-auto scale-90 md:scale-100">
                     {/* SVG with two overlapping circles */}
                     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 340 220">
                       <defs>
@@ -507,21 +536,21 @@ const David: React.FC = () => {
 
               {/* What is a Blueprint box */}
               <motion.div
-                className="max-w-2xl mx-auto mb-8"
+                className="max-w-2xl mx-auto mb-4 md:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 }}
               >
-                <div className="bg-gray-800/60 backdrop-blur border border-cyan-400/30 rounded-xl p-4 text-center">
-                  <h3 className="font-bold text-white mb-1">What is a Blueprint?</h3>
-                  <p className="text-sm text-gray-400">
+                <div className="bg-gray-800/60 backdrop-blur border border-cyan-400/30 rounded-xl p-3 md:p-4 text-center">
+                  <h3 className="font-bold text-white text-sm md:text-base mb-1">What is a Blueprint?</h3>
+                  <p className="text-xs md:text-sm text-gray-400">
                     A modular digital framework that brings together notes, workflows, success plans, and ROI models into a single, collaborative source of truth.
                   </p>
                 </div>
               </motion.div>
 
               {/* Bottom 3 features */}
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-3 gap-2 md:gap-6">
                 {[
                   {
                     title: 'Unified Workspace',
@@ -546,9 +575,9 @@ const David: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.4 + i * 0.1 }}
                   >
-                    <div className="text-3xl mb-2">{feature.icon}</div>
-                    <h3 className="font-bold text-cyan-400 mb-1">{feature.title}</h3>
-                    <p className="text-sm text-gray-400">{feature.desc}</p>
+                    <div className="text-xl md:text-3xl mb-1 md:mb-2">{feature.icon}</div>
+                    <h3 className="font-bold text-cyan-400 text-xs md:text-base mb-0.5 md:mb-1">{feature.title}</h3>
+                    <p className="text-[10px] md:text-sm text-gray-400 hidden md:block">{feature.desc}</p>
                   </motion.div>
                 ))}
               </div>
@@ -559,29 +588,29 @@ const David: React.FC = () => {
       case 4:
         // Solution Slide - Features Grid
         return (
-          <div className="h-full w-full flex items-center justify-center relative overflow-hidden px-8">
+          <div className="h-full w-full flex items-center justify-center relative overflow-hidden overflow-y-auto px-4 md:px-8 py-6 md:py-0">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-cyan-900/10 to-gray-900" />
 
             <div className="relative z-10 max-w-6xl w-full">
               <motion.div
-                className="text-center mb-12"
+                className="text-center mb-6 md:mb-12"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 md:mb-4">
                   <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                     Plai
                   </span>{' '}
                   unifies the entire workflow
                 </h2>
-                <p className="text-xl text-gray-400">
+                <p className="text-sm md:text-xl text-gray-400 px-2">
                   A single platform built on modular 'Blueprints' that connect and power every stage
                 </p>
               </motion.div>
 
               {/* Feature cards in 2x2 grid */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-3 md:gap-6">
                 {[
                   {
                     title: 'AI-Powered Discovery',
@@ -616,12 +645,12 @@ const David: React.FC = () => {
                     transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-10 rounded-2xl blur-xl group-hover:opacity-20 transition-opacity`} />
-                    <div className="relative bg-gray-800/60 backdrop-blur border border-white/10 rounded-2xl p-8 hover:border-cyan-400/30 transition-colors h-full">
-                      <div className="text-4xl mb-4">{feature.icon}</div>
-                      <h3 className={`text-xl font-bold mb-2 bg-gradient-to-r ${feature.gradient} bg-clip-text text-transparent`}>
+                    <div className="relative bg-gray-800/60 backdrop-blur border border-white/10 rounded-2xl p-4 md:p-8 hover:border-cyan-400/30 transition-colors h-full">
+                      <div className="text-2xl md:text-4xl mb-2 md:mb-4">{feature.icon}</div>
+                      <h3 className={`text-sm md:text-xl font-bold mb-1 md:mb-2 bg-gradient-to-r ${feature.gradient} bg-clip-text text-transparent`}>
                         {feature.title}
                       </h3>
-                      <p className="text-gray-400">{feature.desc}</p>
+                      <p className="text-xs md:text-base text-gray-400">{feature.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -633,12 +662,12 @@ const David: React.FC = () => {
       case 5:
         // Team Slide
         return (
-          <div className="h-full w-full flex items-center justify-center relative overflow-hidden px-8">
+          <div className="h-full w-full flex items-center justify-center relative overflow-hidden overflow-y-auto px-4 md:px-8 py-6 md:py-0">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800" />
 
             <div className="relative z-10 max-w-5xl w-full">
               <motion.h2
-                className="text-4xl md:text-5xl font-bold text-center mb-4"
+                className="text-2xl sm:text-3xl md:text-5xl font-bold text-center mb-2 md:mb-4"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -650,7 +679,7 @@ const David: React.FC = () => {
               </motion.h2>
 
               <motion.p
-                className="text-center text-2xl italic text-gray-400 mb-16"
+                className="text-center text-base md:text-2xl italic text-gray-400 mb-6 md:mb-16"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
@@ -658,7 +687,7 @@ const David: React.FC = () => {
                 "Leandro is imagination, Daniel is motion."
               </motion.p>
 
-              <div className="grid md:grid-cols-2 gap-12">
+              <div className="grid grid-cols-2 gap-4 md:gap-12">
                 {[
                   {
                     name: 'Leandro Licausi',
@@ -682,19 +711,19 @@ const David: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 + i * 0.2 }}
                   >
-                    <div className="relative inline-block mb-6">
+                    <div className="relative inline-block mb-3 md:mb-6">
                       <div className={`absolute inset-0 bg-gradient-to-br ${person.gradient} rounded-full blur-2xl opacity-30`} />
                       <img
                         src={person.image}
                         alt={person.name}
-                        className="relative w-48 h-48 rounded-full object-cover border-4 border-white/10"
+                        className="relative w-24 h-24 md:w-48 md:h-48 rounded-full object-cover border-2 md:border-4 border-white/10"
                       />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-1">{person.name}</h3>
-                    <p className={`text-lg font-semibold bg-gradient-to-r ${person.gradient} bg-clip-text text-transparent mb-3`}>
+                    <h3 className="text-base md:text-2xl font-bold text-white mb-0.5 md:mb-1">{person.name}</h3>
+                    <p className={`text-sm md:text-lg font-semibold bg-gradient-to-r ${person.gradient} bg-clip-text text-transparent mb-1 md:mb-3`}>
                       "{person.title}"
                     </p>
-                    <p className="text-gray-400">{person.desc}</p>
+                    <p className="text-xs md:text-base text-gray-400 hidden md:block">{person.desc}</p>
                   </motion.div>
                 ))}
               </div>
@@ -705,22 +734,22 @@ const David: React.FC = () => {
       case 6:
         // Roadmap & Market Slide
         return (
-          <div className="h-full w-full flex items-center justify-center relative overflow-hidden px-8">
+          <div className="h-full w-full flex items-center justify-center relative overflow-hidden overflow-y-auto px-4 md:px-8 py-6 md:py-0">
             <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/10 to-gray-900" />
 
             <div className="relative z-10 max-w-6xl w-full">
-              <div className="grid md:grid-cols-2 gap-12">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-12">
                 {/* Roadmap */}
                 <motion.div
                   initial={{ opacity: 0, x: -40 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-3xl font-bold mb-8">Our 9-Month Plan to MVP</h2>
+                  <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-8">Our 9-Month Plan to MVP</h2>
 
-                  <div className="space-y-6 relative">
+                  <div className="space-y-4 md:space-y-6 relative">
                     {/* Timeline line */}
-                    <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 via-blue-400 to-purple-400" />
+                    <div className="absolute left-3 md:left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 via-blue-400 to-purple-400" />
 
                     {[
                       {
@@ -741,17 +770,17 @@ const David: React.FC = () => {
                     ].map((phase, i) => (
                       <motion.div
                         key={phase.phase}
-                        className="flex gap-6"
+                        className="flex gap-3 md:gap-6"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 + i * 0.2 }}
                       >
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-purple-400 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                        <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-br from-cyan-400 to-purple-400 flex items-center justify-center text-xs md:text-sm font-bold flex-shrink-0">
                           {i + 1}
                         </div>
                         <div>
-                          <h3 className="font-bold text-cyan-400">{phase.phase}: {phase.title}</h3>
-                          <ul className="text-gray-400 text-sm mt-1 space-y-1">
+                          <h3 className="font-bold text-cyan-400 text-sm md:text-base">{phase.phase}: {phase.title}</h3>
+                          <ul className="text-gray-400 text-xs md:text-sm mt-1 space-y-0.5 md:space-y-1">
                             {phase.items.map((item, j) => (
                               <li key={j}>• {item}</li>
                             ))}
@@ -768,13 +797,13 @@ const David: React.FC = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  <h2 className="text-3xl font-bold mb-8">
+                  <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-8">
                     A{' '}
                     <span className="text-amber-400">$48B</span>{' '}
                     Market Ready for Disruption
                   </h2>
 
-                  <div className="space-y-8">
+                  <div className="space-y-4 md:space-y-8">
                     {[
                       {
                         label: 'Market',
@@ -792,13 +821,13 @@ const David: React.FC = () => {
                     ].map((item, i) => (
                       <motion.div
                         key={item.label}
-                        className="bg-gray-800/40 backdrop-blur border border-white/10 rounded-xl p-6"
+                        className="bg-gray-800/40 backdrop-blur border border-white/10 rounded-xl p-3 md:p-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 + i * 0.15 }}
                       >
-                        <span className="text-cyan-400 font-bold">{item.label}:</span>{' '}
-                        <span className="text-gray-300">
+                        <span className="text-cyan-400 font-bold text-sm md:text-base">{item.label}:</span>{' '}
+                        <span className="text-gray-300 text-sm md:text-base">
                           {item.highlight ? (
                             <>
                               {item.text.split(item.highlight)[0]}
@@ -825,22 +854,22 @@ const David: React.FC = () => {
             {/* Animated background */}
             <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/20 to-gray-900" />
             <div className="absolute inset-0">
-              <div className="absolute top-1/3 left-1/3 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
-              <div className="absolute bottom-1/3 right-1/3 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+              <div className="absolute top-1/3 left-1/3 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+              <div className="absolute bottom-1/3 right-1/3 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
             </div>
 
-            <div className="relative z-10 text-center px-8">
+            <div className="relative z-10 text-center px-4 md:px-8">
               <motion.img
                 src="/bluplai-logo-white.png"
                 alt="Plai"
-                className="h-16 mx-auto mb-12"
+                className="h-10 md:h-16 mx-auto mb-6 md:mb-12"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
               />
 
               <motion.h1
-                className="text-7xl md:text-9xl font-bold mb-8"
+                className="text-5xl sm:text-7xl md:text-9xl font-bold mb-4 md:mb-8"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -851,7 +880,7 @@ const David: React.FC = () => {
               </motion.h1>
 
               <motion.p
-                className="text-2xl text-gray-400 mb-16"
+                className="text-base md:text-2xl text-gray-400 mb-8 md:mb-16"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -865,7 +894,7 @@ const David: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
               >
-                <p className="text-lg font-semibold text-white">bluplai.com</p>
+                <p className="text-base md:text-lg font-semibold text-white">bluplai.com</p>
               </motion.div>
             </div>
           </div>
@@ -877,7 +906,12 @@ const David: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen bg-gray-900 overflow-hidden font-poppins">
+    <div
+      className="h-screen w-screen bg-gray-900 overflow-hidden font-poppins"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Slide content */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -894,16 +928,16 @@ const David: React.FC = () => {
       </AnimatePresence>
 
       {/* Navigation */}
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-4 z-50">
+      <div className="fixed bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-4 z-50">
         {/* Progress dots */}
-        <div className="flex gap-2">
+        <div className="flex gap-1.5 md:gap-2">
           {[...Array(totalSlides)].map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrentSlide(i)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
                 i === currentSlide
-                  ? 'bg-cyan-400 w-8'
+                  ? 'bg-cyan-400 w-5 md:w-8'
                   : 'bg-white/30 hover:bg-white/50'
               }`}
             />
@@ -911,20 +945,21 @@ const David: React.FC = () => {
         </div>
       </div>
 
-      {/* Arrow keys hint */}
-      <div className="fixed bottom-8 right-8 text-gray-500 text-sm z-50">
-        Use ← → to navigate
+      {/* Navigation hint - different for mobile/desktop */}
+      <div className="fixed bottom-4 md:bottom-8 right-4 md:right-8 text-gray-500 text-xs md:text-sm z-50">
+        <span className="hidden md:inline">Use ← → to navigate</span>
+        <span className="md:hidden">Swipe to navigate</span>
       </div>
 
-      {/* Click areas for navigation */}
+      {/* Click areas for navigation - hidden on mobile (use swipe instead) */}
       <button
         onClick={prevSlide}
-        className="fixed left-0 top-0 w-1/4 h-full z-40 cursor-w-resize opacity-0"
+        className="fixed left-0 top-0 w-1/4 h-full z-40 cursor-w-resize opacity-0 hidden md:block"
         aria-label="Previous slide"
       />
       <button
         onClick={nextSlide}
-        className="fixed right-0 top-0 w-1/4 h-full z-40 cursor-e-resize opacity-0"
+        className="fixed right-0 top-0 w-1/4 h-full z-40 cursor-e-resize opacity-0 hidden md:block"
         aria-label="Next slide"
       />
     </div>
