@@ -61,7 +61,7 @@ const About: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-bold text-yellow-400 italic">DANIEL</h3>
                 <p className="text-gray-300 text-sm mt-1 italic">
-                  The AI mechanic,<br />makes everything work with AI
+                  Your AI navigator,<br />bridges AI to business impact
                 </p>
                 <p className="text-cyan-400 text-sm mt-3 italic">
                   He will help you define the<br />How & What with AI
